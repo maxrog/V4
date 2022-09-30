@@ -28,6 +28,17 @@ struct V3Colors {
         }
     }
     
+    /// The secondary text color to be used on Views
+    private(set) var secondaryTextColor: Color {
+        get {
+            // fetch from app storage? or user defaults
+            return Color.secondaryLabel
+        }
+        set {
+            // store to app storage? or user defaults
+        }
+    }
+    
     /// The primary background color to be used on views
     private(set) var backgroundColor: Color {
         get {
