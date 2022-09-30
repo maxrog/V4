@@ -68,7 +68,7 @@ struct SessionGradeGrid: View {
         GeometryReader { geo in
             ScrollView(.horizontal) {
                 LazyHGrid(rows: gridRows, spacing: 12) {
-                    ForEach(ClimbGuide.indoor.grades, id: \.self) { grade in
+                    ForEach(ClimbGuide.scale.bouldering, id: \.self) { grade in
                         Button(action: {
                             sessionViewModel.session.routesSent.append(grade)
                         }) {
@@ -77,7 +77,7 @@ struct SessionGradeGrid: View {
                                 .frame(width: (geo.size.width / 2) - gridSpacing * 2,
                                        height: (geo.size.width / 2) - gridSpacing * 2)
                         }
-                        .background(ClimbGuide.color(for: grade, environment: sessionViewModel.session.environment))
+                        .background(ClimbGuide.color(for: grade, style: .bouldering))
                         .cornerRadius((geo.size.width / 2) / 4)
                     }
                 }

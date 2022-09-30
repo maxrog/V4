@@ -9,25 +9,24 @@ import SwiftUI
 
 /// Store climb information
 struct ClimbGuide {
-    static var indoor = Indoor()
-    static var outdoor = Outdoor()
+    static var scale = GradeScale()
     
-    /// returns the grade scale list for the associated environment
-    /// - Parameter environment: The climb environment type
-    static func gradeScale(for environment: ClimbEnvironmentType) -> [String] {
-        switch environment {
-        case .indoor:
-            return indoor.grades
-        case .outdoor:
-            return outdoor.grades
+    /// returns the grade scale list for the associated climbing style
+    /// - Parameter style: The climbing style
+    static func gradeScale(for style: ClimbStyleType) -> [String] {
+        switch style {
+        case .bouldering:
+            return scale.bouldering
+        case .sport:
+            return scale.sport
         }
     }
     
     /// returns a color for the associated grade
     /// - Parameter grade: The grade used to find associated color
-    /// - Parameter environment: The climb environment type
-    static func color(for grade: String, environment: ClimbEnvironmentType) -> Color {
-        let grades = gradeScale(for: environment)
+    /// - Parameter style: The climbing style
+    static func color(for grade: String, style: ClimbStyleType) -> Color {
+        let grades = gradeScale(for: style)
         guard let index = grades.firstIndex(where: {$0 == grade}) else { return .clear }
         let percentage = CGFloat(index) / CGFloat(grades.count)
         return Color(uiColor: Preferences.colors.gradeScaleColors.intermediate(percentage: percentage * 100))
@@ -35,9 +34,10 @@ struct ClimbGuide {
     
 }
 
-/// Climbing indoors information
-struct Indoor {
-    var grades = [
+/// Climbing grade scale information
+struct GradeScale {
+    
+    var bouldering = [
         "VB",
         "V0",
         "V1",
@@ -57,14 +57,15 @@ struct Indoor {
         "V15"
     ]
     
+    var sport = [
+        "5.6",
+        "5.11"
+    ]
+    
 }
 
-/// Climbing outdoors information
-struct Outdoor {
-    var grades = [
-        "5.5",
-        "5.6"
-    ]
+enum ClimbStyleType: Codable {
+    case bouldering, sport
 }
 
 enum ClimbEnvironmentType: Codable {
