@@ -15,8 +15,9 @@ struct SessionView: View {
     var body: some View {
         VStack() {
                 SessionDurationView()
-                SessionGradeGrid()
+                SessionGradeGrid(sessionViewModel: sessionViewModel)
                 Spacer()
+                TimerView(timerViewModel: TimerViewModel())
         }
         .interactiveDismissDisabled()
     }
@@ -48,11 +49,12 @@ struct SessionDurationView: View {
 // MARK: Session Grid
 
 // TODO toggle to switch from boulder to sport.
-// TODO grid should scale from green to red bg colors
 // TODO option to cap grades to certain range
 
 /// Grade grid to select completed climbs
 struct SessionGradeGrid: View {
+    
+    @StateObject var sessionViewModel: SessionViewModel
     
     private let gridRows = [
         GridItem(.flexible(minimum: 50), spacing: 8),
@@ -65,14 +67,14 @@ struct SessionGradeGrid: View {
                 LazyHGrid(rows: gridRows, spacing: 12) {
                     ForEach(ClimbGuide.indoor.grades, id: \.self) { grade in
                         Button(action: {
-                            print("Sent \(grade)!")
+                            sessionViewModel.session.routesSent.append(grade)
                         }) {
                             V4Text(grade, textColor: Color.white)
                                 .font(.system(size: 48, weight: .bold))
                                 .frame(width: (geo.size.width / 2) - gridSpacing * 2,
                                        height: (geo.size.width / 2) - gridSpacing * 2)
                         }
-                        .background(ClimbGuide.color(for: grade, environment: .indoor))
+                        .background(ClimbGuide.color(for: grade, environment: sessionViewModel.session.environment))
                         .cornerRadius((geo.size.width / 2) / 4)
                     }
                 }
@@ -80,4 +82,60 @@ struct SessionGradeGrid: View {
             .scrollIndicators(.hidden)
         }
     }
+}
+
+// MARK: Timer
+
+// TODO have timer view animate up or something to make it stand out
+
+/// Timer for rest periods
+struct TimerView: View {
+    
+    @StateObject var timerViewModel: TimerViewModel
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            Text(timerViewModel.timerString)
+                .font(.system(.largeTitle, design: .monospaced))
+                .foregroundColor(Preferences.colors.textColor)
+                .onReceive(timerViewModel.timer) { _ in
+                    if timerViewModel.isTimerRunning {
+                        timerViewModel.tick()
+                    } else {
+                        timerViewModel.stopTimer()
+                    }
+                }
+                .onTapGesture {
+                    if timerViewModel.isTimerRunning {
+                        timerViewModel.stopTimer()
+                    } else {
+                        timerViewModel.startTimer()
+                    }
+                }
+                .onAppear() {
+                    // no need for UI updates at startup
+                    timerViewModel.stopTimer()
+                }
+            Spacer()
+            if !timerViewModel.isTimerRunning {
+                VStack {
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        V4Text(timerViewModel.restTimeUserString)
+                            .font(.largeTitle)
+                        V4Text("Rest")
+                            .font(.footnote)
+                    }
+                    Slider(value: $timerViewModel.restTime, in: 1...5) { editing in
+                        if !editing {
+                            timerViewModel.stopDate = Date().addingTimeInterval(TimeInterval(60 * Int(6 - timerViewModel.restTime)) + 2)
+                            timerViewModel.startTimer(fromSlide: true)
+                            timerViewModel.restTime = 0
+                        }
+                    }
+                }
+            }
+        }.padding()
+    }
+    
 }

@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+// MARK: Date
+
+extension Date {
+
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+
+}
+
 // MARK: Colors
 
 extension Array where Element: UIColor {

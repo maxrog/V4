@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFE9D17028E7740600546BA2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D16F28E7740600546BA2 /* Session.swift */; };
+		AFE9D17228E77D5B00546BA2 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */; };
 		AFEE103928E6592C0072E481 /* V4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE103828E6592C0072E481 /* V4App.swift */; };
 		AFEE103B28E6592C0072E481 /* SessionLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE103A28E6592C0072E481 /* SessionLaunchView.swift */; };
 		AFEE103D28E6592D0072E481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFEE103C28E6592D0072E481 /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AFE9D16F28E7740600546BA2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		AFEE103528E6592C0072E481 /* V4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEE103828E6592C0072E481 /* V4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V4App.swift; sourceTree = "<group>"; };
 		AFEE103A28E6592C0072E481 /* SessionLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLaunchView.swift; sourceTree = "<group>"; };
@@ -48,6 +52,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AFE9D16E28E7738A00546BA2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		AFEE102C28E6592C0072E481 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +109,7 @@
 		AFEE104728E665750072E481 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AFE9D16F28E7740600546BA2 /* Session.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				AFEE105B28E66A560072E481 /* Session */,
+				AFE9D16E28E7738A00546BA2 /* Settings */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -159,6 +172,7 @@
 				AFEE103A28E6592C0072E481 /* SessionLaunchView.swift */,
 				AFEE105C28E671F20072E481 /* SessionView.swift */,
 				AFEE105E28E671FB0072E481 /* SessionViewModel.swift */,
+				AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -198,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AFEE103028E6592C0072E481 /* Build configuration list for PBXProject "V3" */;
+			buildConfigurationList = AFEE103028E6592C0072E481 /* Build configuration list for PBXProject "V4" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -237,9 +251,11 @@
 				AFEE105F28E671FB0072E481 /* SessionViewModel.swift in Sources */,
 				AFEE105828E667480072E481 /* Preferences.swift in Sources */,
 				AFEE103928E6592C0072E481 /* V4App.swift in Sources */,
+				AFE9D17228E77D5B00546BA2 /* TimerViewModel.swift in Sources */,
 				AFEE105D28E671F20072E481 /* SessionView.swift in Sources */,
 				AFEE105128E665D10072E481 /* ViewExtensions.swift in Sources */,
 				AFEE104F28E665C90072E481 /* FoundationExtensions.swift in Sources */,
+				AFE9D17028E7740600546BA2 /* Session.swift in Sources */,
 				AFEE105428E666F30072E481 /* V4Button.swift in Sources */,
 				AFEE106128E67D090072E481 /* ClimbGuide.swift in Sources */,
 				AFEE105628E667210072E481 /* V4Text.swift in Sources */,
@@ -370,7 +386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"V3/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"V4/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = V4;
@@ -399,7 +415,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"V3/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"V4/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = V4;
@@ -424,7 +440,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AFEE103028E6592C0072E481 /* Build configuration list for PBXProject "V3" */ = {
+		AFEE103028E6592C0072E481 /* Build configuration list for PBXProject "V4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFEE104128E6592D0072E481 /* Debug */,

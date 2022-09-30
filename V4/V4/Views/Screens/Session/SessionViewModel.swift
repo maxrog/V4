@@ -13,4 +13,7 @@ class SessionViewModel: ObservableObject {
     /// Whether a session is currently active
     @Published var sessionActive: Bool = false
     
+    /// The session object
+    @Published var session = Session(environment: .indoor)
+    
 }
