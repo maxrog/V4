@@ -12,7 +12,7 @@ struct V4Button: View {
     let action: () -> Void
     var body: some View {
         Button(title, action: action)
-            .buttonStyle(.plain)
+            .buttonStyle(.bordered)
     }
 }
 
