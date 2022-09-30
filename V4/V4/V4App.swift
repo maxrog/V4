@@ -20,6 +20,11 @@ struct V4App: App {
                         Image(systemName: "point.3.connected.trianglepath.dotted")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
+                Rectangle()
+                    .tabItem {
+                        Image(systemName: "gearshape.circle")
+                            .foregroundColor(Preferences.colors.accentColor)
+                    }
             }
         }
         .onChange(of: scenePhase) { newScenePhase in
