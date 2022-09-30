@@ -9,14 +9,17 @@ import SwiftUI
 
 struct V3Button: View {
     let title: String
+    let action: () -> Void
     var body: some View {
-        V3Button(title: title)
+        Button(title, action: action)
             .buttonStyle(.plain)
     }
 }
 
 struct V3Button_Previews: PreviewProvider {
     static var previews: some View {
-        V3Button(title: "Test Button")
+        V3Button(title: "Test Button") {
+            print("Test Button Pressed!")
+        }
     }
 }
