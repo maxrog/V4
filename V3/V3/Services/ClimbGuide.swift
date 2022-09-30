@@ -12,12 +12,25 @@ struct ClimbGuide {
     static var indoor = Indoor()
     static var outdoor = Outdoor()
     
+    /// returns the grade scale list for the associated environment
+    /// - Parameter environment: The climb environment type
+    static func gradeScale(for environment: ClimbEnvironmentType) -> [String] {
+        switch environment {
+        case .indoor:
+            return indoor.grades
+        case .outdoor:
+            return outdoor.grades
+        }
+    }
+    
     /// returns a color for the associated grade
     /// - Parameter grade: The grade used to find associated color
-    func color(for grade: String, gradeScale: ClimbEnvironmentType) -> Color {
+    /// - Parameter environment: The climb environment type
+    static func color(for grade: String, environment: ClimbEnvironmentType) -> Color {
+        let grades = gradeScale(for: environment)
         guard let index = grades.firstIndex(where: {$0 == grade}) else { return .clear }
-        let percentage = CGFloat(index / grades.count)
-        return Color(uiColor: Preferences.colors.gradeColors.intermediate(percentage: percentage))
+        let percentage = CGFloat(index) / CGFloat(grades.count)
+        return Color(uiColor: Preferences.colors.gradeScaleColors.intermediate(percentage: percentage * 100))
     }
     
 }

@@ -17,6 +17,8 @@ struct Preferences {
 
 struct V3Colors {
     
+    // MARK: Base
+    
     /// The primary text color to be used on views
     private(set) var textColor: Color {
         get {
@@ -55,6 +57,19 @@ struct V3Colors {
         get {
             // fetch from app storage? or user defaults
             return Color.accentColor
+        }
+        set {
+            // store to app storage? or user defaults
+        }
+    }
+    
+    // MARK: Features
+    
+    /// The range of colors for the climb grade scale
+    private(set) var gradeScaleColors: [UIColor] {
+        get {
+            // fetch from app storage? or user defaults
+            return [.green, .yellow, .red]
         }
         set {
             // store to app storage? or user defaults
