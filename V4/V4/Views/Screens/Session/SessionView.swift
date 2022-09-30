@@ -96,9 +96,8 @@ struct TimerView: View {
     var body: some View {
         HStack {
             Spacer()
-            Text(timerViewModel.timerString)
+            V4Text(timerViewModel.timerString)
                 .font(.system(.largeTitle, design: .monospaced))
-                .foregroundColor(Preferences.colors.textColor)
                 .onReceive(timerViewModel.timer) { _ in
                     if timerViewModel.isTimerRunning {
                         timerViewModel.tick()
