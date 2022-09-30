@@ -72,11 +72,12 @@ struct SessionGradeGrid: View {
                         Button(action: {
                             sessionViewModel.session.routesSent.append(grade)
                         }) {
-                            V4Text(grade, textColor: Color.white, backgroundColor: ClimbGuide.color(for: grade, environment: sessionViewModel.session.environment))
+                            V4Text(grade, textColor: Color.white)
                                 .font(.system(size: 48, weight: .bold))
                                 .frame(width: (geo.size.width / 2) - gridSpacing * 2,
                                        height: (geo.size.width / 2) - gridSpacing * 2)
                         }
+                        .background(ClimbGuide.color(for: grade, environment: sessionViewModel.session.environment))
                         .cornerRadius((geo.size.width / 2) / 4)
                     }
                 }
