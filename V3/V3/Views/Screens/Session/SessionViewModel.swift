@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// View model to manage a climbing session
+/// View model to manage a climb session
 class SessionViewModel: ObservableObject {
     
     /// Whether a session is currently active
