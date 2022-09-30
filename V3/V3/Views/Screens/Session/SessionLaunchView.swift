@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Landing page for starting a new climbing session
+/// Landing page for starting a new climb session
 struct SessionLaunchView: View {
     
     @StateObject private var sessionViewModel = SessionViewModel()

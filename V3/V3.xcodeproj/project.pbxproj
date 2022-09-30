@@ -18,7 +18,7 @@
 		AFEE105828E667480072E481 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105728E667480072E481 /* Preferences.swift */; };
 		AFEE105D28E671F20072E481 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105C28E671F20072E481 /* SessionView.swift */; };
 		AFEE105F28E671FB0072E481 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105E28E671FB0072E481 /* SessionViewModel.swift */; };
-		AFEE106128E67D090072E481 /* ClimbingGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE106028E67D090072E481 /* ClimbingGuide.swift */; };
+		AFEE106128E67D090072E481 /* ClimbGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE106028E67D090072E481 /* ClimbGuide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		AFEE105728E667480072E481 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		AFEE105C28E671F20072E481 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
 		AFEE105E28E671FB0072E481 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
-		AFEE106028E67D090072E481 /* ClimbingGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGuide.swift; sourceTree = "<group>"; };
+		AFEE106028E67D090072E481 /* ClimbGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbGuide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 		AFEE104928E665830072E481 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AFEE106028E67D090072E481 /* ClimbingGuide.swift */,
+				AFEE106028E67D090072E481 /* ClimbGuide.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -241,7 +241,7 @@
 				AFEE105128E665D10072E481 /* ViewExtensions.swift in Sources */,
 				AFEE104F28E665C90072E481 /* FoundationExtensions.swift in Sources */,
 				AFEE105428E666F30072E481 /* V3Button.swift in Sources */,
-				AFEE106128E67D090072E481 /* ClimbingGuide.swift in Sources */,
+				AFEE106128E67D090072E481 /* ClimbGuide.swift in Sources */,
 				AFEE105628E667210072E481 /* V3Text.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

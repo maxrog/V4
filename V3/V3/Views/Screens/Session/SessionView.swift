@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Main View for climbing session recording
+/// Main View for climb session recording
 struct SessionView: View {
     
     @StateObject var sessionViewModel: SessionViewModel
