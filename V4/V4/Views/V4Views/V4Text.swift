@@ -10,15 +10,18 @@ import SwiftUI
 struct V4Text: View {
     let text: String
     let textColor: Color
+    let backgroundColor: Color
     
-    init(_ text: String? = nil, textColor: Color = Preferences.colors.textColor) {
+    init(_ text: String? = nil, textColor: Color = Preferences.colors.textColor, backgroundColor: Color = .clear) {
         self.text = text ?? ""
         self.textColor = textColor
+        self.backgroundColor = backgroundColor
     }
     
     var body: some View {
         Text(text)
             .foregroundColor(textColor)
+            .background(backgroundColor)
     }
 }
 
