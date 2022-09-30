@@ -40,7 +40,6 @@ struct SessionDurationView: View {
             Text(Date(), style: .timer)
                 .foregroundColor(Preferences.colors.textColor)
                 .font(.footnote)
-            Spacer()
         }
         .padding()
     }
@@ -55,17 +54,16 @@ struct SessionDurationView: View {
 /// Grade grid to select completed climbs
 struct SessionGradeGrid: View {
     
-    private let gridColumns = [
+    private let gridRows = [
         GridItem(.flexible(minimum: 50), spacing: 8),
-        GridItem(.flexible(minimum: 50), spacing: 8)
     ]
     private let gridSpacing: CGFloat = 8
     
     var body: some View {
         GeometryReader { geo in
-            ScrollView {
-                LazyVGrid(columns: gridColumns, spacing: 8) {
-                    ForEach(ClimbingGuide.gym.grades, id: \.self) { grade in
+            ScrollView(.horizontal) {
+                LazyHGrid(rows: gridRows, spacing: 12) {
+                    ForEach(ClimbGuide.indoor.grades, id: \.self) { grade in
                         Button(action: {
                             print("Sent \(grade)!")
                         }) {
@@ -74,12 +72,11 @@ struct SessionGradeGrid: View {
                                 .frame(width: (geo.size.width / 2) - gridSpacing * 2,
                                        height: (geo.size.width / 2) - gridSpacing * 2)
                         }
-                        .background(Color.accentColor)
+                        .background(ClimbGuide.color(for: grade, environment: .indoor))
                         .cornerRadius((geo.size.width / 2) / 4)
                     }
                 }
             }
-            .padding(8)
             .scrollIndicators(.hidden)
         }
     }
