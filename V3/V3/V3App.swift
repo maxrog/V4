@@ -11,7 +11,7 @@ import SwiftUI
 struct V3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SessionLaunchView()
         }
     }
 }
