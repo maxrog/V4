@@ -9,14 +9,16 @@ import SwiftUI
 
 struct V3Text: View {
     let text: String
+    let textColor: Color
     
-    init(_ text: String? = nil) {
+    init(_ text: String? = nil, textColor: Color = Preferences.colors.textColor) {
         self.text = text ?? ""
+        self.textColor = textColor
     }
     
     var body: some View {
         Text(text)
-            .foregroundColor(Preferences.colors.textColor)
+            .foregroundColor(textColor)
     }
 }
 
