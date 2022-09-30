@@ -1,13 +1,13 @@
 //
-//  V3Text.swift
-//  V3
+//  V4Text.swift
+//  V4
 //
 //  Created by Max Rogers on 9/29/22.
 //
 
 import SwiftUI
 
-struct V3Text: View {
+struct V4Text: View {
     let text: String
     let textColor: Color
     
@@ -22,8 +22,8 @@ struct V3Text: View {
     }
 }
 
-struct V3Text_Previews: PreviewProvider {
+struct V4Text_Previews: PreviewProvider {
     static var previews: some View {
-        V3Text("Test Text")
+        V4Text("Test Text")
     }
 }

@@ -1,13 +1,13 @@
 //
-//  V3Button.swift
-//  V3
+//  V4Button.swift
+//  V4
 //
 //  Created by Max Rogers on 9/29/22.
 //
 
 import SwiftUI
 
-struct V3Button: View {
+struct V4Button: View {
     let title: String
     let action: () -> Void
     var body: some View {
@@ -16,9 +16,9 @@ struct V3Button: View {
     }
 }
 
-struct V3Button_Previews: PreviewProvider {
+struct V4Button_Previews: PreviewProvider {
     static var previews: some View {
-        V3Button(title: "Test Button") {
+        V4Button(title: "Test Button") {
             print("Test Button Pressed!")
         }
     }

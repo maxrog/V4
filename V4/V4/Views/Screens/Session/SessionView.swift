@@ -1,6 +1,6 @@
 //
 //  SessionView.swift
-//  V3
+//  V4
 //
 //  Created by Max Rogers on 9/29/22.
 //
@@ -67,7 +67,7 @@ struct SessionGradeGrid: View {
                         Button(action: {
                             print("Sent \(grade)!")
                         }) {
-                            V3Text(grade, textColor: Color.white)
+                            V4Text(grade, textColor: Color.white)
                                 .font(.system(size: 48, weight: .bold))
                                 .frame(width: (geo.size.width / 2) - gridSpacing * 2,
                                        height: (geo.size.width / 2) - gridSpacing * 2)

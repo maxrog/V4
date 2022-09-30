@@ -1,6 +1,6 @@
 //
 //  ClimbGuide.swift
-//  V3
+//  V4
 //
 //  Created by Max Rogers on 9/29/22.
 //
@@ -42,7 +42,7 @@ struct Indoor {
         "V0",
         "V1",
         "V2",
-        "V3",
+        "V4",
         "V4",
         "V5",
         "V6",

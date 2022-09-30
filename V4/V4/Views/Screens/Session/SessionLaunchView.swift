@@ -1,6 +1,6 @@
 //
 //  SessionLaunchView.swift
-//  V3
+//  V4
 //
 //  Created by Max Rogers on 9/29/22.
 //
@@ -15,10 +15,10 @@ struct SessionLaunchView: View {
     var body: some View {
         VStack {
             Spacer()
-            V3Text("Begin your session")
+            V4Text("Begin your session")
                 .font(.largeTitle)
             Spacer()
-            V3Button(title: "Start") {
+            V4Button(title: "Start") {
                 sessionViewModel.sessionActive = true
             }
             Spacer()

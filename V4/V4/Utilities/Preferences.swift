@@ -1,6 +1,6 @@
 //
 //  Preferences.swift
-//  V3
+//  V4
 //
 //  Created by Max Rogers on 9/29/22.
 //
@@ -12,10 +12,10 @@ import SwiftUI
 // TODO use AppStorage UserDefault wrapper where necessary
 
 struct Preferences {
-    static let colors = V3Colors()
+    static let colors = V4Colors()
 }
 
-struct V3Colors {
+struct V4Colors {
     
     // MARK: Base
     
