@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AFEE103928E6592C0072E481 /* V3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE103828E6592C0072E481 /* V3App.swift */; };
-		AFEE103B28E6592C0072E481 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE103A28E6592C0072E481 /* ContentView.swift */; };
+		AFEE103B28E6592C0072E481 /* SessionLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE103A28E6592C0072E481 /* SessionLaunchView.swift */; };
 		AFEE103D28E6592D0072E481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFEE103C28E6592D0072E481 /* Assets.xcassets */; };
 		AFEE104028E6592D0072E481 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFEE103F28E6592D0072E481 /* Preview Assets.xcassets */; };
 		AFEE104F28E665C90072E481 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE104E28E665C90072E481 /* FoundationExtensions.swift */; };
@@ -16,12 +16,15 @@
 		AFEE105428E666F30072E481 /* V3Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105328E666F30072E481 /* V3Button.swift */; };
 		AFEE105628E667210072E481 /* V3Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105528E667210072E481 /* V3Text.swift */; };
 		AFEE105828E667480072E481 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105728E667480072E481 /* Preferences.swift */; };
+		AFEE105D28E671F20072E481 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105C28E671F20072E481 /* SessionView.swift */; };
+		AFEE105F28E671FB0072E481 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE105E28E671FB0072E481 /* SessionViewModel.swift */; };
+		AFEE106128E67D090072E481 /* ClimbingGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE106028E67D090072E481 /* ClimbingGuide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AFEE103528E6592C0072E481 /* V3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEE103828E6592C0072E481 /* V3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3App.swift; sourceTree = "<group>"; };
-		AFEE103A28E6592C0072E481 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AFEE103A28E6592C0072E481 /* SessionLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLaunchView.swift; sourceTree = "<group>"; };
 		AFEE103C28E6592D0072E481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFEE103F28E6592D0072E481 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AFEE104E28E665C90072E481 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
@@ -29,6 +32,9 @@
 		AFEE105328E666F30072E481 /* V3Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3Button.swift; sourceTree = "<group>"; };
 		AFEE105528E667210072E481 /* V3Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3Text.swift; sourceTree = "<group>"; };
 		AFEE105728E667480072E481 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		AFEE105C28E671F20072E481 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		AFEE105E28E671FB0072E481 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
+		AFEE106028E67D090072E481 /* ClimbingGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGuide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		AFEE104928E665830072E481 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AFEE106028E67D090072E481 /* ClimbingGuide.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -141,9 +148,19 @@
 		AFEE105A28E667C80072E481 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				AFEE103A28E6592C0072E481 /* ContentView.swift */,
+				AFEE105B28E66A560072E481 /* Session */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		AFEE105B28E66A560072E481 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				AFEE103A28E6592C0072E481 /* SessionLaunchView.swift */,
+				AFEE105C28E671F20072E481 /* SessionView.swift */,
+				AFEE105E28E671FB0072E481 /* SessionViewModel.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,12 +233,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFEE103B28E6592C0072E481 /* ContentView.swift in Sources */,
+				AFEE103B28E6592C0072E481 /* SessionLaunchView.swift in Sources */,
+				AFEE105F28E671FB0072E481 /* SessionViewModel.swift in Sources */,
 				AFEE105828E667480072E481 /* Preferences.swift in Sources */,
 				AFEE103928E6592C0072E481 /* V3App.swift in Sources */,
+				AFEE105D28E671F20072E481 /* SessionView.swift in Sources */,
 				AFEE105128E665D10072E481 /* ViewExtensions.swift in Sources */,
 				AFEE104F28E665C90072E481 /* FoundationExtensions.swift in Sources */,
 				AFEE105428E666F30072E481 /* V3Button.swift in Sources */,
+				AFEE106128E67D090072E481 /* ClimbingGuide.swift in Sources */,
 				AFEE105628E667210072E481 /* V3Text.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
