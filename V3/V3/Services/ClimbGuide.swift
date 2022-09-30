@@ -1,5 +1,5 @@
 //
-//  ClimbingGuide.swift
+//  ClimbGuide.swift
 //  V3
 //
 //  Created by Max Rogers on 9/29/22.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-/// Store climbing information
-struct ClimbingGuide {
+/// Store climb information
+struct ClimbGuide {
     static var indoor = Indoor()
     static var outdoor = Outdoor()
     
@@ -22,7 +22,7 @@ struct ClimbingGuide {
     
 }
 
-/// Climbing gym information
+/// Climbing indoors information
 struct Indoor {
     var grades = [
         "VB",
@@ -46,7 +46,7 @@ struct Indoor {
     
 }
 
-/// Climing outdoors information
+/// Climbing outdoors information
 struct Outdoor {
     var grades = [
         "5.5",
