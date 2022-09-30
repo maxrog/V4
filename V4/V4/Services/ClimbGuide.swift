@@ -42,7 +42,7 @@ struct Indoor {
         "V0",
         "V1",
         "V2",
-        "V4",
+        "V3",
         "V4",
         "V5",
         "V6",
@@ -67,7 +67,7 @@ struct Outdoor {
     ]
 }
 
-enum ClimbEnvironmentType {
+enum ClimbEnvironmentType: Codable {
     case indoor, outdoor
 }
 
