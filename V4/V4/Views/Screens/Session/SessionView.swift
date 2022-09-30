@@ -14,10 +14,13 @@ struct SessionView: View {
     
     var body: some View {
         VStack() {
-                SessionDurationView()
-                SessionGradeGrid(sessionViewModel: sessionViewModel)
-                Spacer()
-                TimerView(timerViewModel: TimerViewModel())
+            SessionDurationView()
+            V4Button(title: "Complete Session") {
+                sessionViewModel.sessionActive = false
+            }
+            SessionGradeGrid(sessionViewModel: sessionViewModel)
+            Spacer()
+            TimerView(timerViewModel: TimerViewModel())
         }
         .interactiveDismissDisabled()
     }
