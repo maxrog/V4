@@ -17,11 +17,25 @@ struct V4App: App {
             TabView {
                 SessionLaunchView()
                     .tabItem {
+                        // indoor session
                         Image(systemName: "point.3.connected.trianglepath.dotted")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
                 Rectangle()
                     .tabItem {
+                        // outdoor project session
+                        Image(systemName: "globe.americas")
+                            .foregroundColor(Preferences.colors.accentColor)
+                    }
+                Rectangle()
+                    .tabItem {
+                        // tick list / stats
+                        Image(systemName: "text.book.closed")
+                            .foregroundColor(Preferences.colors.accentColor)
+                    }
+                Rectangle()
+                    .tabItem {
+                        // settings
                         Image(systemName: "gearshape.circle")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
