@@ -9,14 +9,15 @@ import SwiftUI
 
 /// Store climb information
 struct ClimbGuide {
-    static var scale = GradeScale()
+    
+    static private var scale = GradeScale()
     
     /// returns the grade scale list for the associated climbing style
     /// - Parameter style: The climbing style
     static func gradeScale(for style: ClimbStyleType) -> [String] {
         switch style {
-        case .bouldering:
-            return scale.bouldering
+        case .boulder:
+            return scale.boulder
         case .sport:
             return scale.sport
         }
@@ -37,7 +38,7 @@ struct ClimbGuide {
 /// Climbing grade scale information
 struct GradeScale {
     
-    var bouldering = [
+    var boulder = [
         "VB",
         "V0",
         "V1",
@@ -65,7 +66,7 @@ struct GradeScale {
 }
 
 enum ClimbStyleType: Codable {
-    case bouldering, sport
+    case boulder, sport
 }
 
 enum ClimbEnvironmentType: Codable {

@@ -15,11 +15,18 @@ struct SessionLaunchView: View {
     var body: some View {
         VStack {
             Spacer()
-            V4Text("Begin your session")
+            V4Text("Begin Session")
                 .font(.largeTitle)
             Spacer()
-            V4Button(title: "Start") {
-                sessionViewModel.sessionActive = true
+            HStack {
+                V4Button(title: "Sport") {
+                    sessionViewModel.climbStyle = .sport
+                    sessionViewModel.sessionActive = true
+                }
+                V4Button(title: "Boulder") {
+                    sessionViewModel.climbStyle = .boulder
+                    sessionViewModel.sessionActive = true
+                }
             }
             Spacer()
         }
