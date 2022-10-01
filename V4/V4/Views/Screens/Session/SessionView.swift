@@ -13,16 +13,21 @@ struct SessionView: View {
     @StateObject var sessionViewModel: SessionViewModel
     
     var body: some View {
-        VStack() {
-            SessionDurationView()
-            V4Button(title: "Complete Session") {
-                sessionViewModel.sessionActive = false
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                SessionDurationView()
+                V4Button(title: "Complete Session") {
+                    sessionViewModel.sessionActive = false
+                }
+                SessionGradeGrid(sessionViewModel: sessionViewModel)
+                Spacer()
+                    .frame(idealHeight: .infinity)
+                SessionGradeGrid(sessionViewModel: sessionViewModel, fullSelection: true)
+                    .frame(height: geo.size.width / 2.5)
+                TimerView(timerViewModel: TimerViewModel())
             }
-            SessionGradeGrid(sessionViewModel: sessionViewModel)
-            Spacer()
-            TimerView(timerViewModel: TimerViewModel())
+            .interactiveDismissDisabled()
         }
-        .interactiveDismissDisabled()
     }
 }
 
@@ -49,43 +54,10 @@ struct SessionDurationView: View {
     }
 }
 
-// MARK: Session Grid
 
 // TODO toggle to switch from boulder to sport.
 // TODO option to cap grades to certain range
 
-/// Grade grid to select completed climbs
-struct SessionGradeGrid: View {
-    
-    @StateObject var sessionViewModel: SessionViewModel
-    
-    private let gridRows = [
-        GridItem(.flexible(minimum: 50), spacing: 8),
-    ]
-    private let gridSpacing: CGFloat = 8
-    
-    var body: some View {
-        GeometryReader { geo in
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: gridRows, spacing: 12) {
-                    ForEach(ClimbGuide.scale.bouldering, id: \.self) { grade in
-                        Button(action: {
-                            sessionViewModel.session.routesSent.append(grade)
-                        }) {
-                            V4Text(grade, textColor: Color.white)
-                                .font(.system(size: 48, weight: .bold))
-                                .frame(width: (geo.size.width / 2) - gridSpacing * 2,
-                                       height: (geo.size.width / 2) - gridSpacing * 2)
-                        }
-                        .background(ClimbGuide.color(for: grade, style: .bouldering))
-                        .cornerRadius((geo.size.width / 2) / 4)
-                    }
-                }
-            }
-            .scrollIndicators(.hidden)
-        }
-    }
-}
 
 // MARK: Timer
 

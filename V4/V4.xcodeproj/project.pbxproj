@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF3F068928E86244007CABF2 /* SessionGradeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F068828E86244007CABF2 /* SessionGradeGrid.swift */; };
 		AFE9D17028E7740600546BA2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D16F28E7740600546BA2 /* Session.swift */; };
 		AFE9D17228E77D5B00546BA2 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */; };
 		AFEE103928E6592C0072E481 /* V4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE103828E6592C0072E481 /* V4App.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF3F068828E86244007CABF2 /* SessionGradeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionGradeGrid.swift; sourceTree = "<group>"; };
 		AFE9D16F28E7740600546BA2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		AFEE103528E6592C0072E481 /* V4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V4.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,7 @@
 			children = (
 				AFEE103A28E6592C0072E481 /* SessionLaunchView.swift */,
 				AFEE105C28E671F20072E481 /* SessionView.swift */,
+				AF3F068828E86244007CABF2 /* SessionGradeGrid.swift */,
 				AFEE105E28E671FB0072E481 /* SessionViewModel.swift */,
 				AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */,
 			);
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFEE103B28E6592C0072E481 /* SessionLaunchView.swift in Sources */,
+				AF3F068928E86244007CABF2 /* SessionGradeGrid.swift in Sources */,
 				AFEE105F28E671FB0072E481 /* SessionViewModel.swift in Sources */,
 				AFEE105828E667480072E481 /* Preferences.swift in Sources */,
 				AFEE103928E6592C0072E481 /* V4App.swift in Sources */,
