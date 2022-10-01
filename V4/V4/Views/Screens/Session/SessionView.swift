@@ -100,7 +100,7 @@ struct TimerView: View {
         HStack {
             Spacer()
             V4Text(timerViewModel.timerString)
-                .font(.system(.largeTitle, design: .monospaced))
+                .font(.system(size: 74, weight: .bold, design: .monospaced))
                 .onReceive(timerViewModel.timer) { _ in
                     if timerViewModel.isTimerRunning {
                         timerViewModel.tick()
@@ -110,7 +110,7 @@ struct TimerView: View {
                 }
                 .onTapGesture {
                     if timerViewModel.isTimerRunning {
-                        timerViewModel.stopTimer()
+                        timerViewModel.pauseTimer()
                     } else {
                         timerViewModel.startTimer()
                     }
@@ -120,24 +120,28 @@ struct TimerView: View {
                     timerViewModel.stopTimer()
                 }
             Spacer()
-            if !timerViewModel.isTimerRunning {
-                VStack {
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+            HStack {
+                if !timerViewModel.isTimerRunning {
+                    // TODO add button look to this so they know to tap
+                    VStack(spacing: 0) {
                         V4Text(timerViewModel.restTimeUserString)
                             .font(.largeTitle)
                         V4Text("Rest")
                             .font(.footnote)
                     }
-                    Slider(value: $timerViewModel.restTime, in: 1...5) { editing in
-                        if !editing {
-                            timerViewModel.stopDate = Date().addingTimeInterval(TimeInterval(60 * Int(6 - timerViewModel.restTime)) + 2)
-                            timerViewModel.startTimer(fromSlide: true)
-                            timerViewModel.restTime = 0
+                    .onTapGesture {
+                        if timerViewModel.isTimerRunning {
+                            timerViewModel.pauseTimer()
+                        } else {
+                            timerViewModel.startTimer(fromStep: true)
                         }
                     }
+                    Stepper("", value: $timerViewModel.restTime, in: 1...5)
+                        .labelsHidden()
                 }
             }
-        }.padding()
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
+        }
     }
     
 }

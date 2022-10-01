@@ -49,8 +49,9 @@ class TimerViewModel: ObservableObject {
     }
     
     /// Start the timer
-    func startTimer(fromSlide: Bool = false) {
-        if fromSlide {
+    func startTimer(fromStep: Bool = false) {
+        if fromStep {
+            stopDate = Date().addingTimeInterval(TimeInterval(restTime * 60) + 2)
             lastDiff = nil
         } else if let savedPosition = lastDiff {
             stopDate = Date().addingTimeInterval(savedPosition)
@@ -66,13 +67,19 @@ class TimerViewModel: ObservableObject {
         timer.upstream.connect().cancel()
     }
     
+    /// Pause the timer
+    func pauseTimer() {
+        isTimerRunning = false
+        timer.upstream.connect().cancel()
+    }
+    
     // MARK: User Facing
     
-    @Published var restTime: Double = 0
+    @Published var restTime: Int = 1
     /// Displayed above slider while selecting rest period amount
     var restTimeUserString: String {
         get {
-            return restTime > 0 ? "\(Int(6 - restTime))m " : ""
+            return restTime > 0 ? "\(restTime)m " : ""
         }
     }
     
