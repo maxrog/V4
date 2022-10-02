@@ -17,13 +17,28 @@ struct SessionGradeGrid: View {
     
     /// Selection list or sent routes
     var gradesToDisplay: [String] {
-        fullSelection ? ClimbGuide.gradeScale(for: sessionViewModel.climbStyle) : sessionViewModel.session.sentRoutes
+        fullSelection ? ClimbGuide.gradeScale(for: sessionViewModel.climbStyle) : sessionViewModel.session.sentRoutes.uniqued().reversed()
     }
     
     /// Background color of the grid button view
     func backgroundColor(for grade: String) -> Color {
-        if !fullSelection { return Preferences.colors.accentColor }
+        if !fullSelection { return Color(hex: 0xFFDF01) }
         return ClimbGuide.color(for: grade, style: sessionViewModel.climbStyle)
+    }
+    
+    /// Number of sends for associated grade
+    func sendCount(for grade: String) -> String? {
+        let allSends = sessionViewModel.session.sentRoutes.filter({$0 == grade})
+        if allSends.count > 1 {
+            return "\(allSends.count)"
+        } else {
+            return nil
+        }
+    }
+    
+    /// Size Multiplier
+    var sizeMultiplier: CGFloat {
+        return fullSelection ? 2.75 : 3.5
     }
     
     private let gridRows = [
@@ -33,9 +48,8 @@ struct SessionGradeGrid: View {
     
     var body: some View {
         GeometryReader { geo in
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: gridRows, spacing: 12) {
-                    // TODO I think id gets messed up if we have 2 of the same strings in the list (seeing blank spot)
                     ForEach(gradesToDisplay, id: \.self) { grade in
                         Button(action: {
                             if fullSelection {
@@ -46,19 +60,26 @@ struct SessionGradeGrid: View {
                                 sessionViewModel.session.sentRoutes.remove(at: index)
                             }
                         }) {
-                            // TODO add a # within box after send more than 1 to say sent more than 1
-                            V4Text(grade, textColor: Color.white)
-                                .font(.system(size: 48, weight: .bold))
-                                .frame(width: (geo.size.width / 2.75) - gridSpacing * 2,
-                                       height: (geo.size.width / 2.75) - gridSpacing * 2)
+                            ZStack {
+                                V4Text(grade, textColor: Color.white)
+                                    .font(.system(size: fullSelection ? 48 : 32, weight: .bold))
+                                    .frame(width: (geo.size.width / sizeMultiplier) - gridSpacing * 2,
+                                           height: (geo.size.width / sizeMultiplier) - gridSpacing * 2)
+                                if !fullSelection {
+                                    V4Text(sendCount(for: grade))
+                                        .font(.system(.footnote, weight: .semibold))
+                                        .offset(y: 28)
+                                }
+                            }
                         }
                         .background(backgroundColor(for: grade))
-                        .cornerRadius((geo.size.width / 2) / 8)
+                        .cornerRadius(fullSelection ? ((geo.size.width / 2) / 8) : (geo.size.width / 2))
+                        .shadow(radius: fullSelection ? 0 : 3, x: fullSelection ? 0 : 0.5, y: fullSelection ? 0 : 0.5)
                     }
                 }
+                .padding([.horizontal], 8)
             }
             .frame(height: geo.size.width / 2.5)
-            .scrollIndicators(.hidden)
         }
     }
 }
