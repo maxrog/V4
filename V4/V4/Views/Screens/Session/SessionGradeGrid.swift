@@ -54,7 +54,6 @@ struct SessionGradeGrid: View {
                             if fullSelection {
                                 sessionViewModel.session.sentRoutes.append(grade)
                             } else {
-                                // TODO: IF sent route, pop up asking if they want to remove
                                 guard let index = sessionViewModel.session.sentRoutes.firstIndex(where: {$0 == grade}) else { return }
                                 sessionViewModel.session.sentRoutes.remove(at: index)
                             }
