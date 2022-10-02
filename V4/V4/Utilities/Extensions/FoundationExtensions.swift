@@ -7,9 +7,18 @@
 
 import SwiftUI
 
+// MARK: Array
+
+public extension Array where Element: Hashable {
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return filter{ seen.insert($0).inserted }
+    }
+}
+
 // MARK: Date
 
-extension Date {
+public extension Date {
 
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
@@ -19,7 +28,7 @@ extension Date {
 
 // MARK: Colors
 
-extension Array where Element: UIColor {
+public extension Array where Element: UIColor {
     
     /// Returns an in between color from an array of colors
     func intermediate(percentage: CGFloat) -> UIColor {
@@ -58,7 +67,7 @@ extension Array where Element: UIColor {
 https://stackoverflow.com/a/64414674
  */
 
-extension Color {
+public extension Color {
      
     // MARK: - Text Colors
     static let lightText = Color(UIColor.lightText)
