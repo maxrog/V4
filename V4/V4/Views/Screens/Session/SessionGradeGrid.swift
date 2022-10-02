@@ -29,7 +29,7 @@ struct SessionGradeGrid: View {
     func sendCount(for grade: String) -> String? {
         let allSends = sessionViewModel.session.sentRoutes.filter({$0 == grade})
         if allSends.count > 1 {
-            return "\(allSends.count)"
+            return "x\(allSends.count)"
         } else {
             return nil
         }
