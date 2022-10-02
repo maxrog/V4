@@ -17,7 +17,7 @@ struct SessionView: View {
             VStack(spacing: 0) {
                 SessionDurationView()
                 V4Button(title: "End Session", textColor: .red) {
-                    sessionViewModel.sessionActive = false
+                    sessionViewModel.endSessionAlertActive = true
                 }.font(.system(size: 24))
                 
                 Picker("", selection: $sessionViewModel.climbStyle) {
@@ -34,6 +34,10 @@ struct SessionView: View {
                 TimerView(timerViewModel: TimerViewModel())
             }
             .interactiveDismissDisabled()
+            .alert("Finish your session?", isPresented: $sessionViewModel.endSessionAlertActive) {
+                Button("OK", role: .none) { sessionViewModel.sessionActive = false }
+                Button("Cancel", role: .cancel) {}
+            }
         }
     }
 }

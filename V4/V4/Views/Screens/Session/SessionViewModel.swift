@@ -13,6 +13,9 @@ class SessionViewModel: ObservableObject {
     /// Whether a session is currently active
     @Published var sessionActive: Bool = false
     
+    /// Confirmation alert for ending session
+    @Published var endSessionAlertActive: Bool = false
+    
     /// The climb style
     @Published var climbStyle: ClimbStyleType = .boulder
     
