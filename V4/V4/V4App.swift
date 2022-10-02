@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct V4App: App {
     
+    // TODO create a widget/lock screen widget
+    
     @Environment(\.scenePhase) var scenePhase
     
     var body: some Scene {
@@ -21,18 +23,18 @@ struct V4App: App {
                         Image(systemName: "point.3.connected.trianglepath.dotted")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
-                Rectangle()
-                    .tabItem {
-                        // outdoor project session
-                        Image(systemName: "globe.americas")
-                            .foregroundColor(Preferences.colors.accentColor)
-                    }
-                Rectangle()
-                    .tabItem {
-                        // tick list / stats
-                        Image(systemName: "text.book.closed")
-                            .foregroundColor(Preferences.colors.accentColor)
-                    }
+//                Rectangle()
+//                    .tabItem {
+//                        // outdoor project session
+//                        Image(systemName: "globe.americas")
+//                            .foregroundColor(Preferences.colors.accentColor)
+//                    }
+//                Rectangle()
+//                    .tabItem {
+//                        // tick list / stats
+//                        Image(systemName: "text.book.closed")
+//                            .foregroundColor(Preferences.colors.accentColor)
+//                    }
                 Rectangle()
                     .tabItem {
                         // settings
