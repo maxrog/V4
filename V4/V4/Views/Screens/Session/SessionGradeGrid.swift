@@ -22,7 +22,6 @@ struct SessionGradeGrid: View {
     
     /// Background color of the grid button view
     func backgroundColor(for grade: String) -> Color {
-        if !fullSelection { return Color(hex: 0xFFDF01) }
         return ClimbGuide.color(for: grade, style: sessionViewModel.climbStyle)
     }
     
