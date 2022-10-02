@@ -25,13 +25,12 @@ struct ClimbGuide {
     
     /// returns a color for the associated grade
     /// - Parameter grade: The grade used to find associated color
-    /// - Parameter style: The climbing style
     /// - Parameter fullSelection: Whether displaying full selection or sent list
-    static func color(for grade: String, style: ClimbStyleType, fullSelection: Bool) -> Color {
-        var grades = gradeScale(for: style)
+    static func color(for grade: String, fullSelection: Bool) -> Color {
+        var grades: [String] = []
         var index: Int?
         if fullSelection {
-            index = grades.firstIndex(where: {$0 == grade})
+            return Color.systemGray
         } else {
             let boulderGrades = gradeScale(for: .boulder)
             let sportGrades = gradeScale(for: .sport)

@@ -22,7 +22,7 @@ struct SessionGradeGrid: View {
     
     /// Background color of the grid button view
     func backgroundColor(for grade: String) -> Color {
-        return ClimbGuide.color(for: grade, style: sessionViewModel.climbStyle, fullSelection: fullSelection)
+        return ClimbGuide.color(for: grade, fullSelection: fullSelection)
     }
     
     /// Number of sends for associated grade
@@ -37,7 +37,7 @@ struct SessionGradeGrid: View {
     
     /// Size Multiplier
     var sizeMultiplier: CGFloat {
-        return fullSelection ? 2.75 : 3.5
+        return fullSelection ? 2.85 : 3.5
     }
     
     private let gridRows = [
@@ -63,8 +63,12 @@ struct SessionGradeGrid: View {
                                     .font(.system(size: fullSelection ? 48 : 32, weight: .bold))
                                     .frame(width: (geo.size.width / sizeMultiplier) - gridSpacing * 2,
                                            height: (geo.size.width / sizeMultiplier) - gridSpacing * 2)
-                                if !fullSelection {
-                                    V4Text(sendCount(for: grade))
+                                if fullSelection {
+                                    Image(systemName: "checkmark.square")
+                                        .offset(y: 40)
+                                        .foregroundColor(Color.darkText)
+                                } else {
+                                    V4Text(sendCount(for: grade), textColor: Color.darkText)
                                         .font(.system(.footnote, weight: .semibold))
                                         .offset(y: 28)
                                 }
@@ -76,6 +80,13 @@ struct SessionGradeGrid: View {
                     }
                 }
                 .padding([.horizontal], 8)
+            }
+            .if (!fullSelection && sessionViewModel.currentSession.sentRoutes.count > 0) { view in
+                view
+                .background(
+                    .regularMaterial,
+                    in: RoundedRectangle(cornerRadius: 8, style: .continuous)
+                )
             }
             .frame(height: geo.size.width / 2.5)
         }
