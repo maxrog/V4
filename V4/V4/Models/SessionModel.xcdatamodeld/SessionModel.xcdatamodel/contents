@@ -4,7 +4,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="environment" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String"/>
-        <attribute name="sentRoutes" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="sentRoutes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="totalDuration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
 </model>
