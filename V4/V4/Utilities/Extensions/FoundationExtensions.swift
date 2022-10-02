@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: Array
 
+/// Returns unique elements of array while maintaining order
 public extension Array where Element: Hashable {
     func uniqued() -> [Element] {
         var seen = Set<Element>()
@@ -20,6 +21,7 @@ public extension Array where Element: Hashable {
 
 public extension Date {
 
+    /// Provide operators for dates
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
