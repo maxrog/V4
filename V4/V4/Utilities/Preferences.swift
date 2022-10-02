@@ -63,6 +63,17 @@ struct V4Colors {
         }
     }
     
+    /// The secondary accent color to be used on views
+    private(set) var secondaryAccentColor: Color {
+        get {
+            // fetch from app storage? or user defaults
+            return Color.systemGreen
+        }
+        set {
+            // store to app storage? or user defaults
+        }
+    }
+    
     // MARK: Features
     
     /// The range of colors for the climb grade scale
