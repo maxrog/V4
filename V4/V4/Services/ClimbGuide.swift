@@ -26,9 +26,24 @@ struct ClimbGuide {
     /// returns a color for the associated grade
     /// - Parameter grade: The grade used to find associated color
     /// - Parameter style: The climbing style
-    static func color(for grade: String, style: ClimbStyleType) -> Color {
-        let grades = gradeScale(for: style)
-        guard let index = grades.firstIndex(where: {$0 == grade}) else { return .clear }
+    /// - Parameter fullSelection: Whether displaying full selection or sent list
+    static func color(for grade: String, style: ClimbStyleType, fullSelection: Bool) -> Color {
+        var grades = gradeScale(for: style)
+        var index: Int?
+        if fullSelection {
+            index = grades.firstIndex(where: {$0 == grade})
+        } else {
+            let boulderGrades = gradeScale(for: .boulder)
+            let sportGrades = gradeScale(for: .sport)
+            if let boulderIndex = boulderGrades.firstIndex(where: {$0 == grade}) {
+                index = boulderIndex
+                grades = boulderGrades
+            } else if let sportIndex = sportGrades.firstIndex(where: {$0 == grade}) {
+                index = sportIndex
+                grades = sportGrades
+            }
+        }
+        guard let index = index else { return Color(hex: 0xFCC201) }
         let percentage = CGFloat(index) / CGFloat(grades.count)
         return Color(uiColor: Preferences.colors.gradeScaleColors.intermediate(percentage: percentage * 100))
     }
@@ -70,7 +85,7 @@ enum ClimbStyleType: String, Codable {
     case sport = "Sport"
 }
 
-enum ClimbEnvironmentType: Codable {
+enum ClimbEnvironmentType: Int, Codable {
     case indoor, outdoor
 }
 
