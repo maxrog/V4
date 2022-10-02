@@ -19,7 +19,6 @@ struct SessionView: View {
                 V4Button(title: "End Session", textColor: .red) {
                     sessionViewModel.endSessionAlertActive = true
                 }.font(.system(size: 24))
-                
                 Picker("", selection: $sessionViewModel.climbStyle) {
                     ForEach([ClimbStyleType.sport, ClimbStyleType.boulder], id: \.self) { climbStyle in
                         Text(climbStyle.rawValue)
@@ -35,7 +34,10 @@ struct SessionView: View {
             }
             .interactiveDismissDisabled()
             .alert("Finish your session?", isPresented: $sessionViewModel.endSessionAlertActive) {
-                Button("OK", role: .none) { sessionViewModel.sessionActive = false }
+                Button("Save", role: .none) {
+                    SessionManager.shared.saveSession(sessionViewModel.currentSession)
+                    sessionViewModel.sessionActive = false
+                }
                 Button("Cancel", role: .cancel) {}
             }
         }
