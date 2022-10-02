@@ -17,17 +17,17 @@ struct SessionGradeGrid: View {
     
     /// Selection list or sent routes
     var gradesToDisplay: [String] {
-        fullSelection ? ClimbGuide.gradeScale(for: sessionViewModel.climbStyle) : sessionViewModel.session.sentRoutes.uniqued().reversed()
+        fullSelection ? ClimbGuide.gradeScale(for: sessionViewModel.climbStyle) : sessionViewModel.currentSession.sentRoutes.uniqued().reversed()
     }
     
     /// Background color of the grid button view
     func backgroundColor(for grade: String) -> Color {
-        return ClimbGuide.color(for: grade, style: sessionViewModel.climbStyle)
+        return ClimbGuide.color(for: grade, style: sessionViewModel.climbStyle, fullSelection: fullSelection)
     }
     
     /// Number of sends for associated grade
     func sendCount(for grade: String) -> String? {
-        let allSends = sessionViewModel.session.sentRoutes.filter({$0 == grade})
+        let allSends = sessionViewModel.currentSession.sentRoutes.filter({$0 == grade})
         if allSends.count > 1 {
             return "x\(allSends.count)"
         } else {
@@ -52,10 +52,10 @@ struct SessionGradeGrid: View {
                     ForEach(gradesToDisplay, id: \.self) { grade in
                         Button(action: {
                             if fullSelection {
-                                sessionViewModel.session.sentRoutes.append(grade)
+                                sessionViewModel.currentSession.sentRoutes.append(grade)
                             } else {
-                                guard let index = sessionViewModel.session.sentRoutes.firstIndex(where: {$0 == grade}) else { return }
-                                sessionViewModel.session.sentRoutes.remove(at: index)
+                                guard let index = sessionViewModel.currentSession.sentRoutes.firstIndex(where: {$0 == grade}) else { return }
+                                sessionViewModel.currentSession.sentRoutes.remove(at: index)
                             }
                         }) {
                             ZStack {

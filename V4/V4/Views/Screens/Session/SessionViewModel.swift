@@ -19,7 +19,7 @@ class SessionViewModel: ObservableObject {
     /// The climb style
     @Published var climbStyle: ClimbStyleType = .boulder
     
-    /// The session object
-    @Published var session = Session(environment: .indoor)
+    /// The current Session object
+    @Published var currentSession: Session = Session(id: UUID(), environment: .indoor)
     
 }
