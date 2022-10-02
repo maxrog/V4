@@ -16,9 +16,10 @@ struct SessionView: View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 SessionDurationView()
-                V4Button(title: "Complete Session") {
+                V4Button(title: "End Session", textColor: .red) {
                     sessionViewModel.sessionActive = false
                 }
+                .font(.system(size: 24, weight: .semibold))
                 SessionGradeGrid(sessionViewModel: sessionViewModel)
                 Spacer()
                     .frame(idealHeight: .infinity)
@@ -45,7 +46,7 @@ struct SessionDurationView: View {
         VStack {
             Text(Date(), style: .time)
                 .foregroundColor(Preferences.colors.textColor)
-                .font(.title)
+                .font(.largeTitle)
             Text(Date(), style: .timer)
                 .foregroundColor(Preferences.colors.textColor)
                 .font(.footnote)
@@ -94,12 +95,17 @@ struct TimerView: View {
             Spacer()
             HStack {
                 if !timerViewModel.isTimerRunning {
-                    // TODO add button look to this so they know to tap
                     VStack(spacing: 0) {
-                        V4Text(timerViewModel.restTimeUserString)
-                            .font(.largeTitle)
-                        V4Text("Rest")
+                        V4Text(timerViewModel.restTimeUserString, textColor: Preferences.colors.accentColor)
+                            .font(.system(.largeTitle, weight: .semibold))
+                        V4Text("Rest", textColor: Preferences.colors.accentColor)
                             .font(.footnote)
+                    }
+                    .frame(width: 70)
+                    .padding(8)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .fill(Color.systemGray6)
                     }
                     .onTapGesture {
                         if timerViewModel.isTimerRunning {
@@ -108,8 +114,23 @@ struct TimerView: View {
                             timerViewModel.startTimer(fromStep: true)
                         }
                     }
-                    Stepper("", value: $timerViewModel.restTime, in: 1...5)
-                        .labelsHidden()
+                    VStack(spacing: 4) {
+                        Image(systemName: "chevron.up")
+                            .padding(8)
+                            .onTapGesture {
+                                guard timerViewModel.restTime <= 4 else { return }
+                                timerViewModel.restTime += 1
+                            }
+                        Image(systemName: "chevron.down")
+                            .padding(8)
+                            .onTapGesture {
+                                guard timerViewModel.restTime >= 2 else { return }
+                                timerViewModel.restTime -= 1
+                            }
+                    }.background {
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .fill(.regularMaterial)
+                    }
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
