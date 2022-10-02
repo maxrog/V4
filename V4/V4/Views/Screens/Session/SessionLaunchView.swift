@@ -19,11 +19,11 @@ struct SessionLaunchView: View {
                 .font(.largeTitle)
             Spacer()
             HStack {
-                V4Button(title: "Sport") {
+                V4Button(title: ClimbStyleType.sport.rawValue) {
                     sessionViewModel.climbStyle = .sport
                     sessionViewModel.sessionActive = true
                 }
-                V4Button(title: "Boulder") {
+                V4Button(title: ClimbStyleType.boulder.rawValue) {
                     sessionViewModel.climbStyle = .boulder
                     sessionViewModel.sessionActive = true
                 }
