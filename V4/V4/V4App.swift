@@ -14,6 +14,8 @@ struct V4App: App {
     
     @Environment(\.scenePhase) var scenePhase
     
+    let sessionManager = SessionManager.shared
+    
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -23,27 +25,33 @@ struct V4App: App {
                         Image(systemName: "point.3.connected.trianglepath.dotted")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
+                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
 //                Rectangle()
 //                    .tabItem {
 //                        // outdoor project session
 //                        Image(systemName: "globe.americas")
 //                            .foregroundColor(Preferences.colors.accentColor)
 //                    }
-//                Rectangle()
-//                    .tabItem {
-//                        // tick list / stats
-//                        Image(systemName: "text.book.closed")
-//                            .foregroundColor(Preferences.colors.accentColor)
-//                    }
+//                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
+                ClimbLogView()
+                    .tabItem {
+                        // tick list / stats
+                        Image(systemName: "text.book.closed")
+                            .foregroundColor(Preferences.colors.accentColor)
+                    }
+                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
                 Rectangle()
                     .tabItem {
                         // settings
                         Image(systemName: "gearshape.circle")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
+
             }
         }
         .onChange(of: scenePhase) { newScenePhase in
+            sessionManager.save()
+            
             switch scenePhase {
             case .active:
                 /// application became active

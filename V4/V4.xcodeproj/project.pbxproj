@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF24620028EA195E00CD7E3C /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2461FF28EA195E00CD7E3C /* CoreDataExtensions.swift */; };
+		AF24620228EA1A9C00CD7E3C /* ClimbLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24620128EA1A9C00CD7E3C /* ClimbLogViewModel.swift */; };
 		AF3F068928E86244007CABF2 /* SessionGradeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F068828E86244007CABF2 /* SessionGradeGrid.swift */; };
+		AF3F068B28E9FA7D007CABF2 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F068A28E9FA7D007CABF2 /* SessionManager.swift */; };
+		AF3F069128EA0F04007CABF2 /* ClimbLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F069028EA0F04007CABF2 /* ClimbLogView.swift */; };
+		AF3F069528EA1220007CABF2 /* SessionModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF3F069328EA1220007CABF2 /* SessionModel.xcdatamodeld */; };
 		AFE9D17028E7740600546BA2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D16F28E7740600546BA2 /* Session.swift */; };
 		AFE9D17228E77D5B00546BA2 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */; };
 		AFEE103928E6592C0072E481 /* V4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE103828E6592C0072E481 /* V4App.swift */; };
@@ -25,7 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF2461FF28EA195E00CD7E3C /* CoreDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
+		AF24620128EA1A9C00CD7E3C /* ClimbLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbLogViewModel.swift; sourceTree = "<group>"; };
 		AF3F068828E86244007CABF2 /* SessionGradeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionGradeGrid.swift; sourceTree = "<group>"; };
+		AF3F068A28E9FA7D007CABF2 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		AF3F069028EA0F04007CABF2 /* ClimbLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbLogView.swift; sourceTree = "<group>"; };
+		AF3F069428EA1220007CABF2 /* SessionModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SessionModel.xcdatamodel; sourceTree = "<group>"; };
 		AFE9D16F28E7740600546BA2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		AFE9D17128E77D5B00546BA2 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		AFEE103528E6592C0072E481 /* V4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V4.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF3F068F28EA0EEA007CABF2 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F069028EA0F04007CABF2 /* ClimbLogView.swift */,
+				AF24620128EA1A9C00CD7E3C /* ClimbLogViewModel.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
 		AFE9D16E28E7738A00546BA2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				AFE9D16F28E7740600546BA2 /* Session.swift */,
+				AF3F069328EA1220007CABF2 /* SessionModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -120,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				AFEE106028E67D090072E481 /* ClimbGuide.swift */,
+				AF3F068A28E9FA7D007CABF2 /* SessionManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -155,6 +176,7 @@
 			children = (
 				AFEE104E28E665C90072E481 /* FoundationExtensions.swift */,
 				AFEE105028E665D10072E481 /* ViewExtensions.swift */,
+				AF2461FF28EA195E00CD7E3C /* CoreDataExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				AFEE105B28E66A560072E481 /* Session */,
+				AF3F068F28EA0EEA007CABF2 /* Log */,
 				AFE9D16E28E7738A00546BA2 /* Settings */,
 			);
 			path = Screens;
@@ -251,14 +274,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFEE103B28E6592C0072E481 /* SessionLaunchView.swift in Sources */,
+				AF3F069128EA0F04007CABF2 /* ClimbLogView.swift in Sources */,
 				AF3F068928E86244007CABF2 /* SessionGradeGrid.swift in Sources */,
+				AF24620028EA195E00CD7E3C /* CoreDataExtensions.swift in Sources */,
 				AFEE105F28E671FB0072E481 /* SessionViewModel.swift in Sources */,
 				AFEE105828E667480072E481 /* Preferences.swift in Sources */,
+				AF3F069528EA1220007CABF2 /* SessionModel.xcdatamodeld in Sources */,
 				AFEE103928E6592C0072E481 /* V4App.swift in Sources */,
 				AFE9D17228E77D5B00546BA2 /* TimerViewModel.swift in Sources */,
+				AF3F068B28E9FA7D007CABF2 /* SessionManager.swift in Sources */,
 				AFEE105D28E671F20072E481 /* SessionView.swift in Sources */,
 				AFEE105128E665D10072E481 /* ViewExtensions.swift in Sources */,
 				AFEE104F28E665C90072E481 /* FoundationExtensions.swift in Sources */,
+				AF24620228EA1A9C00CD7E3C /* ClimbLogViewModel.swift in Sources */,
 				AFE9D17028E7740600546BA2 /* Session.swift in Sources */,
 				AFEE105428E666F30072E481 /* V4Button.swift in Sources */,
 				AFEE106128E67D090072E481 /* ClimbGuide.swift in Sources */,
@@ -463,6 +491,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AF3F069328EA1220007CABF2 /* SessionModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AF3F069428EA1220007CABF2 /* SessionModel.xcdatamodel */,
+			);
+			currentVersion = AF3F069428EA1220007CABF2 /* SessionModel.xcdatamodel */;
+			path = SessionModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AFEE102D28E6592C0072E481 /* Project object */;
 }
