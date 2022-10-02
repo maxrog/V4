@@ -51,10 +51,12 @@ class TimerViewModel: ObservableObject {
     /// Start the timer
     func startTimer(fromStep: Bool = false) {
         if fromStep {
-            stopDate = Date().addingTimeInterval(TimeInterval(restTime * 60) + 2)
+            stopDate = Date().addingTimeInterval(TimeInterval(restTime * 60) + 1)
+            tick()
             lastDiff = nil
         } else if let savedPosition = lastDiff {
             stopDate = Date().addingTimeInterval(savedPosition)
+            tick()
         }
         isTimerRunning = true
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
