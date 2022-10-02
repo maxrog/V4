@@ -26,11 +26,12 @@ struct SessionView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding()
-                SessionGradeGrid(sessionViewModel: sessionViewModel)
                 Spacer().frame(idealHeight: .infinity)
+                SessionGradeGrid(sessionViewModel: sessionViewModel)
                 SessionGradeGrid(sessionViewModel: sessionViewModel, fullSelection: true)
                     .frame(height: geo.size.width / 2.5)
                 TimerView(timerViewModel: TimerViewModel())
+                    .padding(.vertical, 12)
             }
             .interactiveDismissDisabled()
             .alert("Finish your session?", isPresented: $sessionViewModel.endSessionAlertActive) {
@@ -113,10 +114,10 @@ struct TimerView: View {
                     }
                     .frame(width: 70)
                     .padding(8)
-                    .background {
-                        RoundedRectangle(cornerRadius: 8, style: .continuous)
-                            .fill(Color.systemGray6)
-                    }
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    )
                     .onTapGesture {
                         if timerViewModel.isTimerRunning {
                             timerViewModel.pauseTimer()
@@ -137,10 +138,10 @@ struct TimerView: View {
                                 guard timerViewModel.restTime >= 2 else { return }
                                 timerViewModel.restTime -= 1
                             }
-                    }.background {
-                        RoundedRectangle(cornerRadius: 8, style: .continuous)
-                            .fill(.regularMaterial)
-                    }
+                    }.background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    )
                 }
             }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
         }
