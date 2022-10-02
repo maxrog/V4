@@ -18,11 +18,17 @@ struct SessionView: View {
                 SessionDurationView()
                 V4Button(title: "End Session", textColor: .red) {
                     sessionViewModel.sessionActive = false
+                }.font(.system(size: 24))
+                
+                Picker("", selection: $sessionViewModel.climbStyle) {
+                    ForEach([ClimbStyleType.sport, ClimbStyleType.boulder], id: \.self) { climbStyle in
+                        Text(climbStyle.rawValue)
+                    }
                 }
-                .font(.system(size: 24, weight: .semibold))
+                .pickerStyle(.segmented)
+                .padding()
                 SessionGradeGrid(sessionViewModel: sessionViewModel)
-                Spacer()
-                    .frame(idealHeight: .infinity)
+                Spacer().frame(idealHeight: .infinity)
                 SessionGradeGrid(sessionViewModel: sessionViewModel, fullSelection: true)
                     .frame(height: geo.size.width / 2.5)
                 TimerView(timerViewModel: TimerViewModel())
@@ -56,9 +62,7 @@ struct SessionDurationView: View {
 }
 
 
-// TODO toggle to switch from boulder to sport.
 // TODO option to cap grades to certain range
-
 
 // MARK: Timer
 

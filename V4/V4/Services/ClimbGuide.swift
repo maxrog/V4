@@ -65,8 +65,9 @@ struct GradeScale {
     
 }
 
-enum ClimbStyleType: Codable {
-    case boulder, sport
+enum ClimbStyleType: String, Codable {
+    case boulder = "Boulder"
+    case sport = "Sport"
 }
 
 enum ClimbEnvironmentType: Codable {
