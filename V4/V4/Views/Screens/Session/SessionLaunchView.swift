@@ -21,10 +21,12 @@ struct SessionLaunchView: View {
             HStack {
                 V4Button(title: ClimbStyleType.sport.rawValue) {
                     sessionViewModel.climbStyle = .sport
+                    sessionViewModel.currentSession = Session(id: UUID(), environment: .indoor)
                     sessionViewModel.sessionActive = true
                 }
                 V4Button(title: ClimbStyleType.boulder.rawValue) {
                     sessionViewModel.climbStyle = .boulder
+                    sessionViewModel.currentSession = Session(id: UUID(), environment: .indoor)
                     sessionViewModel.sessionActive = true
                 }
             }
