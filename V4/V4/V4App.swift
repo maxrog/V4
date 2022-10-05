@@ -40,7 +40,7 @@ struct V4App: App {
                             .foregroundColor(Preferences.colors.accentColor)
                     }
                     .environment(\.managedObjectContext, sessionManager.container.viewContext)
-                Rectangle()
+                SettingsView()
                     .tabItem {
                         // settings
                         Image(systemName: "gearshape.circle")
