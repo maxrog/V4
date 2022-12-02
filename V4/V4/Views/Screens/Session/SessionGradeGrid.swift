@@ -62,8 +62,11 @@ struct SessionGradeGrid: View {
                             ZStack {
                                 V4Text(grade, textColor: gridType == .menu ? Color.white : Color.darkText)
                                     .font(.system(size: gridType == .menu ? 48 : 32, weight: .bold))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
                                     .frame(width: (geo.size.width / sizeMultiplier) - gridSpacing * 2,
                                            height: (geo.size.width / sizeMultiplier) - gridSpacing * 2)
+                                
                                 switch gridType {
                                 case .menu:
                                     Image(systemName: "checkmark.seal")
