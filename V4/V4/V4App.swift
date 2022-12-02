@@ -13,6 +13,7 @@ struct V4App: App {
     // TODO create a widget/lock screen widget
     
     @Environment(\.scenePhase) var scenePhase
+    @StateObject var settingsViewModel = SettingsViewModel()
     
     let sessionManager = SessionManager.shared
     
@@ -26,6 +27,7 @@ struct V4App: App {
                             .foregroundColor(Preferences.colors.accentColor)
                     }
                     .environment(\.managedObjectContext, sessionManager.container.viewContext)
+                    .environmentObject(settingsViewModel)
 //                Rectangle()
 //                    .tabItem {
 //                        // outdoor project session
@@ -40,12 +42,14 @@ struct V4App: App {
                             .foregroundColor(Preferences.colors.accentColor)
                     }
                     .environment(\.managedObjectContext, sessionManager.container.viewContext)
+                    .environmentObject(settingsViewModel)
                 SettingsView()
                     .tabItem {
                         // settings
                         Image(systemName: "gearshape.circle")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
+                    .environmentObject(settingsViewModel)
 
             }
         }
