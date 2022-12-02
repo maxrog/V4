@@ -12,17 +12,17 @@ struct SessionGradeGrid: View {
     
     @StateObject var sessionViewModel: SessionViewModel
     
-    /// Selection list or sent routes
-    var fullSelection = false
+    /// Full grade list or sent/completed climbs
+    let gridType: ClimbListType
     
     /// Selection list or sent routes
     var gradesToDisplay: [String] {
-        fullSelection ? ClimbGuide.gradeScale(for: sessionViewModel.climbStyle) : sessionViewModel.currentSession.sentRoutes.uniqued().reversed()
+        gridType == .menu ? ClimbGuide.gradeScale(for: sessionViewModel.climbStyle) : sessionViewModel.currentSession.sentRoutes.uniqued().reversed()
     }
     
     /// Background color of the grid button view
     func backgroundColor(for grade: String) -> Color {
-        return ClimbGuide.color(for: grade, fullSelection: fullSelection)
+        return ClimbGuide.color(for: grade, listType: gridType)
     }
     
     /// Number of sends for associated grade
@@ -37,7 +37,7 @@ struct SessionGradeGrid: View {
     
     /// Size Multiplier
     var sizeMultiplier: CGFloat {
-        return fullSelection ? 2.85 : 3.5
+        return gridType == .menu ? 2.85 : 3.5
     }
     
     private let gridRows = [
@@ -51,23 +51,25 @@ struct SessionGradeGrid: View {
                 LazyHGrid(rows: gridRows, spacing: 12) {
                     ForEach(gradesToDisplay, id: \.self) { grade in
                         Button(action: {
-                            if fullSelection {
+                            switch gridType {
+                            case .menu:
                                 sessionViewModel.currentSession.sentRoutes.append(grade)
-                            } else {
+                            case .sent:
                                 guard let index = sessionViewModel.currentSession.sentRoutes.firstIndex(where: {$0 == grade}) else { return }
                                 sessionViewModel.currentSession.sentRoutes.remove(at: index)
                             }
                         }) {
                             ZStack {
-                                V4Text(grade, textColor: fullSelection ? Color.white : Color.darkText)
-                                    .font(.system(size: fullSelection ? 48 : 32, weight: .bold))
+                                V4Text(grade, textColor: gridType == .menu ? Color.white : Color.darkText)
+                                    .font(.system(size: gridType == .menu ? 48 : 32, weight: .bold))
                                     .frame(width: (geo.size.width / sizeMultiplier) - gridSpacing * 2,
                                            height: (geo.size.width / sizeMultiplier) - gridSpacing * 2)
-                                if fullSelection {
+                                switch gridType {
+                                case .menu:
                                     Image(systemName: "checkmark.seal")
                                         .offset(y: 40)
                                         .foregroundColor(Color.darkText)
-                                } else {
+                                case .sent:
                                     V4Text(sendCount(for: grade), textColor: Color.darkText)
                                         .font(.system(.footnote, weight: .semibold))
                                         .offset(y: 28)
@@ -75,21 +77,22 @@ struct SessionGradeGrid: View {
                             }
                         }
                         .background(backgroundColor(for: grade))
-                        .cornerRadius(fullSelection ? ((geo.size.width / 2) / 8) : (geo.size.width / 2))
-                        .shadow(radius: fullSelection ? 0 : 3, x: fullSelection ? 0 : 0.5, y: fullSelection ? 0 : 0.5)
+                        .cornerRadius(gridType == .menu ? ((geo.size.width / 2) / 8) : (geo.size.width / 2))
+                        .shadow(radius: gridType == .menu ? 0 : 3,
+                                x: gridType == .menu ? 0 : 0.5,
+                                y: gridType == .menu ? 0 : 0.5)
                     }
                 }
                 .padding([.horizontal], 8)
             }
-            .if (!fullSelection && sessionViewModel.currentSession.sentRoutes.count > 0) { view in
+            .if (gridType != .menu && sessionViewModel.currentSession.sentRoutes.count > 0) { view in
                 view
-                .background(
-                    .regularMaterial,
-                    in: RoundedRectangle(cornerRadius: 8, style: .continuous)
-                )
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    )
             }
             .frame(height: geo.size.width / 2.5)
         }
     }
 }
-
