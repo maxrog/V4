@@ -59,7 +59,7 @@ struct SessionGradeGrid: View {
                             }
                         }) {
                             ZStack {
-                                V4Text(grade, textColor: Color.white)
+                                V4Text(grade, textColor: fullSelection ? Color.white : Color.darkText)
                                     .font(.system(size: fullSelection ? 48 : 32, weight: .bold))
                                     .frame(width: (geo.size.width / sizeMultiplier) - gridSpacing * 2,
                                            height: (geo.size.width / sizeMultiplier) - gridSpacing * 2)
