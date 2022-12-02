@@ -26,8 +26,9 @@ struct SessionView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding()
-                Spacer().frame(idealHeight: .infinity)
+                Spacer()
                 SessionGradeGrid(sessionViewModel: sessionViewModel)
+                Spacer()
                 SessionGradeGrid(sessionViewModel: sessionViewModel, fullSelection: true)
                     .frame(height: geo.size.width / 2.5)
                 TimerView(timerViewModel: TimerViewModel())
