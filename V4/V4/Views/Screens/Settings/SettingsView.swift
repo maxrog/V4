@@ -19,23 +19,26 @@ struct SettingsView: View {
                 V4Text("App Settings")
             }
             Section {
-                V4Text("Boulder Redpoint: \(settingsViewModel.userBoulderRedpointLevel)")
-                    .font(.headline)
-                Picker("Boulder Redpoint", selection: $settingsViewModel.userBoulderRedpointLevel) {
-                    ForEach(ClimbGuide.gradeScale(for: .boulder), id: \.self) { grade in
-                        V4Text(grade)
-                    }
-                }.pickerStyle(.wheel)
-                
-                V4Text("Sport Redpoint: \(settingsViewModel.userSportRedpointLevel)")
-                    .font(.headline)
-                Picker("Sport Redpoint", selection: $settingsViewModel.userSportRedpointLevel) {
-                    ForEach(ClimbGuide.gradeScale(for: .sport), id: \.self) { grade in
-                        V4Text(grade)
-                    }
-                }.pickerStyle(.wheel)
+                HStack {
+                    Image(systemName: "flame.circle.fill")
+                    Picker("Boulder", selection: $settingsViewModel.userBoulderRedpointLevel) {
+                        ForEach(ClimbGuide.gradeScale(for: .boulder), id: \.self) { grade in
+                            V4Text(grade)
+                        }
+                    }.pickerStyle(.menu)
+                }
+                HStack {
+                    Image(systemName: "flame.circle.fill")
+                    Picker("Sport", selection: $settingsViewModel.userSportRedpointLevel) {
+                        ForEach(ClimbGuide.gradeScale(for: .sport), id: \.self) { grade in
+                            V4Text(grade)
+                        }
+                    }.pickerStyle(.menu)
+                }
             } header: {
-                V4Text("Climb Settings")
+                V4Text("Redpoint Level")
+            } footer: {
+                V4Text("Your redpoint level settings will help optimize your session experience.")
             }
         }
     }
