@@ -64,7 +64,7 @@ struct SessionGradeGrid: View {
                                     .frame(width: (geo.size.width / sizeMultiplier) - gridSpacing * 2,
                                            height: (geo.size.width / sizeMultiplier) - gridSpacing * 2)
                                 if fullSelection {
-                                    Image(systemName: "checkmark.square")
+                                    Image(systemName: "checkmark.seal")
                                         .offset(y: 40)
                                         .foregroundColor(Color.darkText)
                                 } else {
