@@ -38,7 +38,7 @@ struct SettingsView: View {
             } header: {
                 V4Text("Redpoint Level")
             } footer: {
-                V4Text("Your redpoint level settings will help optimize your session experience.")
+                V4Text("Setting your hardest redpoint level will help optimize your session experience.")
             }
         }
     }
