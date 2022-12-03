@@ -10,6 +10,7 @@ import SwiftUI
 /// Grade grid to select completed climbs and display completed grades
 struct SessionGradeGrid: View {
     
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     @StateObject var sessionViewModel: SessionViewModel
     
     /// Full grade list or sent/completed climbs
@@ -17,15 +18,25 @@ struct SessionGradeGrid: View {
     
     /// Selection list or sent routes
     var gradesToDisplay: [String] {
-        gridType == .menu ? ClimbGuide.gradeScale(for: sessionViewModel.climbStyle) : sessionViewModel.currentSession.sentRoutes.uniqued().reversed()
+        switch gridType {
+        case .sent:
+            return sessionViewModel.currentSession.sentRoutes.uniqued().reversed()
+        case .menu:
+            return ClimbGuide.gradeScale(for: sessionViewModel.climbStyle,
+                                         redpointLevel: settingsViewModel.redpointLevel(for: sessionViewModel.climbStyle))
+        }
     }
     
-    /// Background color of the grid button view
+    /// Background color of the grid button view for associated route grade
+    /// - Parameter grade: The route's grade
     func backgroundColor(for grade: String) -> Color {
-        return ClimbGuide.color(for: grade, listType: gridType)
+        return ClimbGuide.color(for: grade,
+                                listType: gridType,
+                                redpointLevel: settingsViewModel.redpointLevel(for: sessionViewModel.climbStyle))
     }
     
     /// Number of sends for associated grade
+    /// - Parameter grade: The route's grade
     func sendCount(for grade: String) -> String? {
         let allSends = sessionViewModel.currentSession.sentRoutes.filter({$0 == grade})
         if allSends.count > 1 {

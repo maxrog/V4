@@ -14,27 +14,39 @@ struct ClimbGuide {
     
     /// returns the grade scale list for the associated climbing style
     /// - Parameter style: The climbing style
-    static func gradeScale(for style: ClimbStyleType) -> [String] {
+    /// - Parameter redpointLevel: The user's redpoint level if set. Optimizes list to show
+    static func gradeScale(for style: ClimbStyleType, redpointLevel: String? = nil) -> [String] {
         switch style {
         case .boulder:
-            return scale.boulder
+            let boulderScale = scale.boulder
+            guard let redpointLevel = redpointLevel,
+                  !redpointLevel.isEmpty,
+                  let redpointIndex: Int = boulderScale.firstIndex(of: redpointLevel) else { return boulderScale }
+            
+            return Array(boulderScale.prefix(redpointIndex))
         case .sport:
-            return scale.sport
+            let sportScale = scale.sport
+            guard let redpointLevel = redpointLevel,
+                  !redpointLevel.isEmpty,
+                  let redpointIndex: Int = sportScale.firstIndex(of: redpointLevel) else { return sportScale }
+            
+            return Array(sportScale.prefix(redpointIndex))
         }
     }
     
     /// returns a color for the associated grade
     /// - Parameter grade: The grade used to find associated color
     /// - Parameter listType: Whether displaying full grade scale or a completed/sent list
-    static func color(for grade: String, listType: ClimbListType) -> Color {
+    /// - Parameter redpointLevel: The user's redpoint level if set. Optimizes list to show
+    static func color(for grade: String, listType: ClimbListType, redpointLevel: String? = nil) -> Color {
         var grades: [String] = []
         var index: Int?
         switch listType {
         case .menu:
             return Color.systemGray
         case .sent:
-            let boulderGrades = gradeScale(for: .boulder)
-            let sportGrades = gradeScale(for: .sport)
+            let boulderGrades = gradeScale(for: .boulder, redpointLevel: redpointLevel)
+            let sportGrades = gradeScale(for: .sport, redpointLevel: redpointLevel)
             if let boulderIndex = boulderGrades.firstIndex(where: {$0 == grade}) {
                 index = boulderIndex
                 grades = boulderGrades
