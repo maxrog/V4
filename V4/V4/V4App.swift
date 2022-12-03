@@ -9,9 +9,7 @@ import SwiftUI
 
 @main
 struct V4App: App {
-    
-    // TODO create a widget/lock screen widget
-    
+        
     @Environment(\.scenePhase) var scenePhase
     @StateObject var settingsViewModel = SettingsViewModel()
     
