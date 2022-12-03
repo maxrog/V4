@@ -49,6 +49,7 @@ class TimerViewModel: ObservableObject {
     }
     
     /// Start the timer
+    /// - Parameter fromStep: whether the timer is started from the stepper
     func startTimer(fromStep: Bool = false) {
         if fromStep {
             stopDate = Date().addingTimeInterval(TimeInterval(restTime * 60) + 1)
