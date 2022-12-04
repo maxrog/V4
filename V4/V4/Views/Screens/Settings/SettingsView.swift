@@ -18,6 +18,7 @@ struct SettingsView: View {
             } header: {
                 V4Text("App Settings")
             }
+            .headerProminence(.increased)
             Section {
                 HStack {
                     Image(systemName: "flame.circle.fill")
@@ -40,6 +41,7 @@ struct SettingsView: View {
             } footer: {
                 V4Text("Setting your hardest redpoint level will help optimize your session experience.")
             }
+            .headerProminence(.increased)
         }
     }
 }
