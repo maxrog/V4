@@ -17,7 +17,11 @@ class SessionViewModel: ObservableObject {
     @Published var endSessionAlertActive: Bool = false
     
     /// The climb style
-    @Published var climbStyle: ClimbStyleType = .boulder
+    @Published var climbStyle: ClimbStyleType = .boulder {
+        didSet {
+            Haptics.shared.play()
+        }
+    }
     
     /// The current Session object
     @Published var currentSession: Session = Session(id: UUID(), environment: .indoor)
