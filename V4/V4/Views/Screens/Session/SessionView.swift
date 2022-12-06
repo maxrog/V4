@@ -35,7 +35,7 @@ struct SessionView: View {
                     .padding(.vertical, 12)
             }
             .interactiveDismissDisabled()
-            .alert("Finish your session?", isPresented: $sessionViewModel.endSessionAlertActive) {
+            .alert("Finished with session?", isPresented: $sessionViewModel.endSessionAlertActive) {
                 Button("Save", role: .none) {
                     SessionManager.shared.saveSession(sessionViewModel.currentSession)
                     sessionViewModel.sessionActive = false
