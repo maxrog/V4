@@ -45,6 +45,7 @@ class TimerViewModel: ObservableObject {
         } else {
             stopTimer()
             lastDiff = nil
+            Haptics.shared.notifyTimerEnd()
         }
     }
     
