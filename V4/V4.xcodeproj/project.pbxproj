@@ -13,6 +13,7 @@
 		AF3F068B28E9FA7D007CABF2 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F068A28E9FA7D007CABF2 /* SessionManager.swift */; };
 		AF3F069128EA0F04007CABF2 /* ClimbLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F069028EA0F04007CABF2 /* ClimbLogView.swift */; };
 		AF3F069528EA1220007CABF2 /* SessionModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF3F069328EA1220007CABF2 /* SessionModel.xcdatamodeld */; };
+		AF8D94A0293CD45700D169DD /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8D949F293CD45700D169DD /* Haptics.swift */; };
 		AF95A9D128EDA356007AF3B6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF95A9D028EDA356007AF3B6 /* SettingsView.swift */; };
 		AF95A9D328EDA369007AF3B6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF95A9D228EDA369007AF3B6 /* SettingsViewModel.swift */; };
 		AFE9D17028E7740600546BA2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE9D16F28E7740600546BA2 /* Session.swift */; };
@@ -38,6 +39,7 @@
 		AF3F068A28E9FA7D007CABF2 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		AF3F069028EA0F04007CABF2 /* ClimbLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbLogView.swift; sourceTree = "<group>"; };
 		AF3F069428EA1220007CABF2 /* SessionModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SessionModel.xcdatamodel; sourceTree = "<group>"; };
+		AF8D949F293CD45700D169DD /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		AF95A9D028EDA356007AF3B6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AF95A9D228EDA369007AF3B6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		AFE9D16F28E7740600546BA2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				AFEE106028E67D090072E481 /* ClimbGuide.swift */,
 				AF3F068A28E9FA7D007CABF2 /* SessionManager.swift */,
+				AF8D949F293CD45700D169DD /* Haptics.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8D94A0293CD45700D169DD /* Haptics.swift in Sources */,
 				AFEE103B28E6592C0072E481 /* SessionLaunchView.swift in Sources */,
 				AF3F069128EA0F04007CABF2 /* ClimbLogView.swift in Sources */,
 				AF3F068928E86244007CABF2 /* SessionGradeGrid.swift in Sources */,
