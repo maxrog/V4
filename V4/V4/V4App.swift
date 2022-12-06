@@ -14,41 +14,40 @@ struct V4App: App {
     @StateObject var settingsViewModel = SettingsViewModel()
     
     let sessionManager = SessionManager.shared
-    
+        
     var body: some Scene {
         WindowGroup {
-            TabView {
+            TabView(selection: $settingsViewModel.selectedTabIndex) {
                 SessionLaunchView()
                     .tabItem {
-                        // indoor session
                         Image(systemName: "point.3.connected.trianglepath.dotted")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
                     .environment(\.managedObjectContext, sessionManager.container.viewContext)
                     .environmentObject(settingsViewModel)
-//                Rectangle()
-//                    .tabItem {
-//                        // outdoor project session
-//                        Image(systemName: "globe.americas")
-//                            .foregroundColor(Preferences.colors.accentColor)
-//                    }
-//                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
+                    .tag(V4Tabs.session.rawValue)
+                //                Rectangle()
+                //                    .tabItem {
+                //                        Image(systemName: "globe.americas")
+                //                            .foregroundColor(Preferences.colors.accentColor)
+                //                    }
+                //                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
+                //                    .tag(V4Tabs.project.rawValue)
                 ClimbLogView()
                     .tabItem {
-                        // tick list / stats
                         Image(systemName: "text.book.closed")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
                     .environment(\.managedObjectContext, sessionManager.container.viewContext)
                     .environmentObject(settingsViewModel)
+                    .tag(V4Tabs.stats.rawValue)
                 SettingsView()
                     .tabItem {
-                        // settings
                         Image(systemName: "gearshape.circle")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
                     .environmentObject(settingsViewModel)
-
+                    .tag(V4Tabs.settings.rawValue)
             }
         }
         .onChange(of: scenePhase) { newScenePhase in
@@ -69,4 +68,12 @@ struct V4App: App {
             }
         }
     }
+}
+
+
+private enum V4Tabs: Int {
+    case session = 0
+    case project
+    case stats
+    case settings
 }

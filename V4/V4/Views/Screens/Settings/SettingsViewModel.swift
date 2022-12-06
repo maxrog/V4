@@ -10,6 +10,10 @@ import SwiftUI
 /// View model to manage user settings
 class SettingsViewModel: ObservableObject {
     
+    
+    /// User's selected tab in main tab view
+    @AppStorage(StorageKeys.selectedTabIndex.rawValue) var selectedTabIndex: Int = 0
+    
     /// User boulder redpoint level
     @AppStorage(StorageKeys.boulderRedpoint.rawValue) var userBoulderRedpointLevel: String = ClimbGuide.gradeScale(for: .boulder).last ?? ""
     
@@ -31,5 +35,5 @@ class SettingsViewModel: ObservableObject {
 
 fileprivate
 enum StorageKeys: String {
-    case boulderRedpoint, sportRedpoint
+    case selectedTabIndex, boulderRedpoint, sportRedpoint
 }
