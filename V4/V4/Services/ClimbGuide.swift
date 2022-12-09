@@ -23,14 +23,14 @@ struct ClimbGuide {
                   !redpointLevel.isEmpty,
                   let redpointIndex: Int = boulderScale.firstIndex(of: redpointLevel) else { return boulderScale }
             
-            return Array(boulderScale.prefix(redpointIndex))
+            return Array(boulderScale.prefix(redpointIndex + 1))
         case .sport:
             let sportScale = scale.sport
             guard let redpointLevel = redpointLevel,
                   !redpointLevel.isEmpty,
                   let redpointIndex: Int = sportScale.firstIndex(of: redpointLevel) else { return sportScale }
             
-            return Array(sportScale.prefix(redpointIndex))
+            return Array(sportScale.prefix(redpointIndex + 1))
         }
     }
     
