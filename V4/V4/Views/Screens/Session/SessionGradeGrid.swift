@@ -11,7 +11,7 @@ import SwiftUI
 struct SessionGradeGrid: View {
     
     @EnvironmentObject var settingsViewModel: SettingsViewModel
-    @StateObject var sessionViewModel: SessionViewModel
+    @ObservedObject var sessionViewModel: SessionViewModel
     
     /// Full grade list or sent/completed climbs
     let gridType: ClimbListType
