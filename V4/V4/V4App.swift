@@ -23,32 +23,28 @@ struct V4App: App {
                         Image(systemName: "point.3.connected.trianglepath.dotted")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
-                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
-                    .environmentObject(settingsViewModel)
                     .tag(V4Tabs.session.rawValue)
                 //                Rectangle()
                 //                    .tabItem {
                 //                        Image(systemName: "globe.americas")
                 //                            .foregroundColor(Preferences.colors.accentColor)
                 //                    }
-                //                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
                 //                    .tag(V4Tabs.project.rawValue)
                 ClimbLogView()
                     .tabItem {
                         Image(systemName: "text.book.closed")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
-                    .environment(\.managedObjectContext, sessionManager.container.viewContext)
-                    .environmentObject(settingsViewModel)
                     .tag(V4Tabs.stats.rawValue)
                 SettingsView()
                     .tabItem {
                         Image(systemName: "gearshape.circle")
                             .foregroundColor(Preferences.colors.accentColor)
                     }
-                    .environmentObject(settingsViewModel)
                     .tag(V4Tabs.settings.rawValue)
             }
+            .environment(\.managedObjectContext, sessionManager.container.viewContext)
+            .environmentObject(settingsViewModel)
         }
         .onChange(of: scenePhase) { newScenePhase in
             sessionManager.save()
