@@ -12,36 +12,39 @@ struct SettingsView: View {
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     var body: some View {
-        Form {
-            Section {
-               
-            } header: {
-                V4Text("App Settings")
-            }
-            .headerProminence(.increased)
-            Section {
-                HStack {
-                    Image(systemName: "flame.circle.fill")
-                    Picker("Boulder", selection: $settingsViewModel.userBoulderRedpointLevel) {
-                        ForEach(ClimbGuide.gradeScale(for: .boulder), id: \.self) { grade in
-                            V4Text(grade)
-                        }
-                    }.pickerStyle(.menu)
+        NavigationStack {
+            Form {
+                Section {
+                    
+                } header: {
+                    V4Text("App")
                 }
-                HStack {
-                    Image(systemName: "flame.circle.fill")
-                    Picker("Sport", selection: $settingsViewModel.userSportRedpointLevel) {
-                        ForEach(ClimbGuide.gradeScale(for: .sport), id: \.self) { grade in
-                            V4Text(grade)
-                        }
-                    }.pickerStyle(.menu)
+                .headerProminence(.increased)
+                Section {
+                    HStack {
+                        Image(systemName: "flame.circle.fill")
+                        Picker("Boulder", selection: $settingsViewModel.userBoulderRedpointLevel) {
+                            ForEach(ClimbGuide.gradeScale(for: .boulder), id: \.self) { grade in
+                                V4Text(grade)
+                            }
+                        }.pickerStyle(.menu)
+                    }
+                    HStack {
+                        Image(systemName: "flame.circle.fill")
+                        Picker("Sport", selection: $settingsViewModel.userSportRedpointLevel) {
+                            ForEach(ClimbGuide.gradeScale(for: .sport), id: \.self) { grade in
+                                V4Text(grade)
+                            }
+                        }.pickerStyle(.menu)
+                    }
+                } header: {
+                    V4Text("Redpoint Level")
+                } footer: {
+                    V4Text("Setting your redpoint level will help optimize your session experience.")
                 }
-            } header: {
-                V4Text("Redpoint Level")
-            } footer: {
-                V4Text("Setting your redpoint level will help optimize your session experience.")
+                .headerProminence(.increased)
             }
-            .headerProminence(.increased)
+            .navigationTitle("Settings")
         }
     }
 }

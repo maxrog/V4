@@ -67,6 +67,7 @@ struct ClimbLogView: View {
                             removeSessions(at:)
                 )
             }
+            .navigationTitle("Log")
             .navigationDestination(for: Session.self, destination: { session in
                 V4Text(session.sentRoutes.joined(separator: ", "))
                     .navigationTitle(Text(session.date, style: .date))
