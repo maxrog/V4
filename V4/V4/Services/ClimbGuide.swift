@@ -43,7 +43,7 @@ struct ClimbGuide {
         var index: Int?
         switch listType {
         case .menu:
-            return Color.systemGray
+            return Color.white.opacity(0.74)
         case .sent:
             let boulderGrades = gradeScale(for: .boulder, redpointLevel: redpointLevel)
             let sportGrades = gradeScale(for: .sport, redpointLevel: redpointLevel)

@@ -11,17 +11,20 @@ struct V4Button: View {
     let title: String
     let action: () -> Void
     let textColor: Color
+    let backgroundColor: Color?
     
-    init(title: String, textColor: Color = Preferences.colors.accentColor, action: @escaping () -> Void) {
+    init(title: String, textColor: Color = Preferences.colors.accentColor, backgroundColor: Color? = nil, action: @escaping () -> Void) {
         self.title = title
         self.textColor = textColor
         self.action = action
+        self.backgroundColor = backgroundColor
     }
     
     var body: some View {
         Button(title, action: action)
             .buttonStyle(.bordered)
             .foregroundColor(textColor)
+            .background(backgroundColor)
     }
 }
 

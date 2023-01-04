@@ -16,9 +16,10 @@ struct SessionView: View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 SessionDurationView()
-                V4Button(title: "End Session", textColor: .red) {
+                V4Button(title: "End Session", textColor: .white, backgroundColor: .red) {
                     sessionViewModel.endSessionAlertActive = true
                 }.font(.system(size: 24))
+                    .cornerRadius(8)
                 Picker("", selection: $sessionViewModel.climbStyle) {
                     ForEach([ClimbStyleType.sport, ClimbStyleType.boulder], id: \.self) { climbStyle in
                         Text(climbStyle.rawValue)
@@ -34,6 +35,7 @@ struct SessionView: View {
                 TimerView(timerViewModel: TimerViewModel())
                     .padding(.vertical, 12)
             }
+            .background(Color.systemGroupedBackground)
             .interactiveDismissDisabled()
             .alert("Finished with session?", isPresented: $sessionViewModel.endSessionAlertActive) {
                 Button("Save", role: .none) {

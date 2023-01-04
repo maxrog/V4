@@ -71,7 +71,7 @@ struct SessionGradeGrid: View {
                             }
                         }) {
                             ZStack {
-                                V4Text(grade, textColor: gridType == .menu ? Color.white : Color.darkText)
+                                V4Text(grade, textColor: Color.darkText.opacity(gridType == .menu ? 0.64 : 1))
                                     .font(.system(size: gridType == .menu ? 48 : 32, weight: .bold))
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.5)
