@@ -26,7 +26,7 @@ struct V4App: App {
                     .tag(V4Tabs.session.rawValue)
                 //                Rectangle()
                 //                    .tabItem {
-                //                        Image(systemName: "globe.americas")
+                //                        Image(systemName: "mountain.2.fill")
                 //                            .foregroundColor(Preferences.colors.accentColor)
                 //                    }
                 //                    .tag(V4Tabs.project.rawValue)
