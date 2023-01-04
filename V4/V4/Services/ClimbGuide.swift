@@ -119,6 +119,10 @@ enum ClimbStyleType: String, Codable {
     case sport = "Sport"
 }
 
+extension ClimbStyleType: Identifiable {
+    var id: RawValue { rawValue }
+}
+
 enum ClimbEnvironmentType: Int, Codable {
     case indoor, outdoor
 }

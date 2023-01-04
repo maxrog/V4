@@ -43,27 +43,43 @@ struct ClimbLogView: View {
     }
     
     var body: some View {
-        List {
-            ForEach(sessions) { session in
-                VStack {
-                    Text(session.date, style: .date)
-                        .font(.largeTitle)
-                        .foregroundColor(Preferences.colors.textColor)
-                    V4Text(session.sentRoutes.joined(separator: ", "))
+        NavigationStack {
+            List {
+                ForEach(sessions) { session in
+                    NavigationLink(value: session) {
+                        HStack {
+                            Image(systemName: session.environment == .indoor ? "house.lodge.fill" : "mountain.2.fill")
+                            VStack(alignment: .leading) {
+                                Text(session.date, style: .date)
+                                    .font(.headline)
+                                    .foregroundColor(Preferences.colors.textColor)
+                                HStack {
+                                    ForEach(session.styles) { style in
+                                        V4Text(style.rawValue)
+                                            .font(.subheadline)
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+                .onDelete(perform:
+                            removeSessions(at:)
+                )
             }
-            .onDelete(perform:
-                removeSessions(at:)
-            )
-        }
-        .alert("Delete this session? Operation cannot be undone.", isPresented: $logViewModel.removeSessionAlertActive) {
-            Button("Cancel", role: .cancel) {}
-            Button("Delete", role: .destructive) {
-                for index in logViewModel.sessionOffsetsToRemove ?? [] {
-                    let session = sessions[index]
-                    SessionManager.shared.removeSession(session)
+            .navigationDestination(for: Session.self, destination: { session in
+                V4Text(session.sentRoutes.joined(separator: ", "))
+                    .navigationTitle(Text(session.date, style: .date))
+            })
+            .alert("Delete this session? Operation cannot be undone.", isPresented: $logViewModel.removeSessionAlertActive) {
+                Button("Cancel", role: .cancel) {}
+                Button("Delete", role: .destructive) {
+                    for index in logViewModel.sessionOffsetsToRemove ?? [] {
+                        let session = sessions[index]
+                        SessionManager.shared.removeSession(session)
+                    }
+                    logViewModel.removeSessionAlertActive = false
                 }
-                logViewModel.removeSessionAlertActive = false
             }
         }
     }
