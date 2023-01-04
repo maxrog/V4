@@ -69,8 +69,7 @@ struct ClimbLogView: View {
             }
             .navigationTitle("Log")
             .navigationDestination(for: Session.self, destination: { session in
-                V4Text(session.sentRoutes.joined(separator: ", "))
-                    .navigationTitle(Text(session.date, style: .date))
+                ClimbLogDetailView(session: session)
             })
             .alert("Delete this session? Operation cannot be undone.", isPresented: $logViewModel.removeSessionAlertActive) {
                 Button("Cancel", role: .cancel) {}

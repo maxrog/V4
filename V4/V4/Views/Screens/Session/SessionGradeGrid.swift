@@ -17,7 +17,7 @@ struct SessionGradeGrid: View {
     let gridType: ClimbListType
     
     /// Selection list or sent routes
-    var gradesToDisplay: [String] {
+    private var gradesToDisplay: [String] {
         switch gridType {
         case .sent:
             return sessionViewModel.currentSession.sentRoutes.uniqued().reversed()
@@ -25,30 +25,6 @@ struct SessionGradeGrid: View {
             return ClimbGuide.gradeScale(for: sessionViewModel.climbStyle,
                                          redpointLevel: settingsViewModel.redpointLevel(for: sessionViewModel.climbStyle))
         }
-    }
-    
-    /// Background color of the grid button view for associated route grade
-    /// - Parameter grade: The route's grade
-    func backgroundColor(for grade: String) -> Color {
-        return ClimbGuide.color(for: grade,
-                                listType: gridType,
-                                redpointLevel: settingsViewModel.redpointLevel(for: sessionViewModel.climbStyle))
-    }
-    
-    /// Number of sends for associated grade
-    /// - Parameter grade: The route's grade
-    func sendCount(for grade: String) -> String? {
-        let allSends = sessionViewModel.currentSession.sentRoutes.filter({$0 == grade})
-        if allSends.count > 1 {
-            return "x\(allSends.count)"
-        } else {
-            return nil
-        }
-    }
-    
-    /// Size Multiplier
-    var sizeMultiplier: CGFloat {
-        return gridType == .menu ? 2.85 : 3.5
     }
     
     private let gridRows = [
@@ -66,35 +42,16 @@ struct SessionGradeGrid: View {
                             case .menu:
                                 sessionViewModel.currentSession.sentRoutes.append(grade)
                             case .sent:
+                                // TODO instead of tap, add a long press with haptic / alert to remove
                                 guard let index = sessionViewModel.currentSession.sentRoutes.firstIndex(where: {$0 == grade}) else { return }
                                 sessionViewModel.currentSession.sentRoutes.remove(at: index)
                             }
                         }) {
-                            ZStack {
-                                V4Text(grade, textColor: Color.darkText.opacity(gridType == .menu ? 0.64 : 1))
-                                    .font(.system(size: gridType == .menu ? 48 : 32, weight: .bold))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.5)
-                                    .frame(width: (geo.size.width / sizeMultiplier) - gridSpacing * 2,
-                                           height: (geo.size.width / sizeMultiplier) - gridSpacing * 2)
-                                
-                                switch gridType {
-                                case .menu:
-                                    Image(systemName: "checkmark.seal")
-                                        .offset(y: 40)
-                                        .foregroundColor(Color.darkText)
-                                case .sent:
-                                    V4Text(sendCount(for: grade), textColor: Color.darkText)
-                                        .font(.system(.footnote, weight: .semibold))
-                                        .offset(y: 28)
-                                }
-                            }
+                            V4GradeCircleView(size: geo.size,
+                                              session: sessionViewModel.currentSession,
+                                              gridType: gridType,
+                                              grade: grade)
                         }
-                        .background(backgroundColor(for: grade))
-                        .cornerRadius(gridType == .menu ? ((geo.size.width / 2) / 8) : (geo.size.width / 2))
-                        .shadow(radius: gridType == .menu ? 0 : 3,
-                                x: gridType == .menu ? 0 : 0.5,
-                                y: gridType == .menu ? 0 : 0.5)
                     }
                 }
                 .padding([.horizontal], 8)
